@@ -22,4 +22,6 @@ test:
 
 production:
   adapter: postgresql
-  database: trilist
+  host: localhost
+  user: user
+  database: postgresql-angular-95966
