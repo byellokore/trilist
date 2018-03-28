@@ -67,8 +67,8 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the white list through.  private
     def user_params
-      params.require(:user).permit(:name, :email, :phone, :password_digest, :activation_digest, :activated, :remember_digest, :reset_digest, :reset_send_at)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
