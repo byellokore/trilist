@@ -10,8 +10,14 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  host: localhost
+  port: 5432
+  adapter: postgresql
+  encoding: unicode
+  database: trilist
+  pool: 5
+  username: trilist
+  password: h1l6e3fever106
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

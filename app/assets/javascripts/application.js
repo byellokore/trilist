@@ -11,8 +11,13 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require activestorage
 //= require turbolinks
-//= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require_tree .
+setTimeout(function(){
+//    $("#main-adviser").remove();
+    $('#main-adviser').fadeOut(300, function(){ $(this).remove();});
+}, 4000);

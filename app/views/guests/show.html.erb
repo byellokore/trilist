@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @guest.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @guest.email %>
+</p>
+
+<p>
+  <strong>Cellphone:</strong>
+  <%= @guest.cellphone %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @guest.birthday %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @guest.location %>
+</p>
+
+<p>
+  <strong>Confirmation token:</strong>
+  <%= @guest.confirmation_token %>
+</p>
+
+<p>
+  <strong>Confirmed at:</strong>
+  <%= @guest.confirmed_at %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @guest.event %>
+</p>
+
+<%= link_to 'Edit', edit_guest_path(@guest) %> |
+<%= link_to 'Back', guests_path %>

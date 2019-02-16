@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Seo url:</strong>
+  <%= @event.seo_url %>
+</p>
+
+<p>
+  <strong>Short url:</strong>
+  <%= @event.short_url %>
+</p>
+
+<p>
+  <strong>Will happen:</strong>
+  <%= @event.will_happen %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @event.address %>
+</p>
+
+<p>
+  <strong>Open to registration:</strong>
+  <%= @event.open_to_registration %>
+</p>
+
+<p>
+  <strong>Close to registration:</strong>
+  <%= @event.close_to_registration %>
+</p>
+
+<p>
+  <strong>Contacts:</strong>
+  <%= @event.contacts %>
+</p>
+
+<p>
+  <strong>Inviter:</strong>
+  <%= @event.inviter %>
+</p>
+
+<ul>
+  <% @event.guests.each do |guest| %>
+   <li><%= guest.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

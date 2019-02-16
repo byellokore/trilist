@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  seo_url: MyString
+  short_url: MyString
+  will_happen: 2019-01-30 20:07:37
+  address: MyString
+  open_to_registration: 2019-01-30 20:07:37
+  close_to_registration: 2019-01-30 20:07:37
+  contacts: 
+  inviter: one
+
+two:
+  name: MyString
+  seo_url: MyString
+  short_url: MyString
+  will_happen: 2019-01-30 20:07:37
+  address: MyString
+  open_to_registration: 2019-01-30 20:07:37
+  close_to_registration: 2019-01-30 20:07:37
+  contacts: 
+  inviter: two

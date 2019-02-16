@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :authenticate_inviter!
   before_action :set_user, only: %i[show edit update destroy]
 
   # GET /users
@@ -24,15 +25,16 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+      ExampleJob.perform_later(user_params)
+    #@user = User.new(user_params)
     respond_to do |format|
-      if verify_recaptcha(model: @user) && @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+    #  if verify_recaptcha(model: @user) && @user.save
+        format.html { redirect_to root_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+     # else
+     #   format.html { render :new }
+     #   format.json { render json: @user.errors, status: :unprocessable_entity }
+     # end
     end
   end
 
