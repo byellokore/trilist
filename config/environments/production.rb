@@ -72,11 +72,11 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
+      address:              'email-smtp.us-east-1.amazonaws.com',
       port:                 587,
-      domain:               'google.com',
-      user_name:            'byeldj@gmail.com',
-      password:             'Canada@8',
+      domain:               'supracash.com.br',
+      user_name:            ENV['AWS_SES_USERNAME'],
+      password:             ENV['AWS_SES_PASSWORD'],
       authentication:       'plain',
       enable_starttls_auto: true }
 
