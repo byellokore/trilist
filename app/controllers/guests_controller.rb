@@ -1,6 +1,8 @@
 class GuestsController < ApplicationController
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_list, only: [:new_to_list]
+  before_action :authenticate_inviter!, only:[:index, :show, :edit, :update, :destroy]
+  #prepend_before_action :check_captcha, only:[:new_to_list] # Change this to be any actions you want to protect.
   # GET /guests
   # GET /guests.json
   def index
@@ -16,6 +18,11 @@ class GuestsController < ApplicationController
   def new
     @guest = Guest.new
   end
+  # GET /guests/new_to_list
+  def new_to_list
+    @guest = Guest.new
+    @event
+  end
 
   # GET /guests/1/edit
   def edit
@@ -24,6 +31,20 @@ class GuestsController < ApplicationController
   # POST /guests
   # POST /guests.json
   def create
+    @guest = Guest.new(guest_params)
+
+    respond_to do |format|
+      if @guest.save
+        format.html { redirect_to @guest, notice: 'Guest was successfully created.' }
+        format.json { render :show, status: :created, location: @guest }
+      else
+        format.html { render :new }
+        format.json { render json: @guest.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def insert_list
     @guest = Guest.new(guest_params)
 
     respond_to do |format|
@@ -67,8 +88,23 @@ class GuestsController < ApplicationController
       @guest = Guest.find(params[:id])
     end
 
+    def set_list
+      @event = Event.find_by(seo_url: params[:seo_url])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
       params.require(:guest).permit(:name, :email, :cellphone, :birthday, :location, :confirmation_token, :confirmed_at, :event_id)
+    end
+
+    def check_captcha
+      unless verify_recaptcha
+        self.resource = resource_class.new sign_up_params
+        resource.validate # Look for any other validation errors besides Recaptcha
+        set_minimum_password_length
+        #puts resource.class
+        #puts resource.methods
+        respond_with_navigational(resource) { render :new }
+      end
     end
 end
