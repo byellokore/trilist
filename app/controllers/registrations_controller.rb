@@ -7,8 +7,8 @@ class RegistrationsController < Devise::RegistrationsController
       self.resource = resource_class.new sign_up_params
       resource.validate # Look for any other validation errors besides Recaptcha
       set_minimum_password_length
-      puts resource.class
-      puts resource.methods
+      #puts resource.class
+      #puts resource.methods
       respond_with_navigational(resource) { render :new }
     end
   end

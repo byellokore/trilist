@@ -34,6 +34,15 @@
             <li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">Contato</a>
             </li>
+            <% if inviter_signed_in? %>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to('Desconectar', destroy_inviter_session_path, method: :delete, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' ) %>
+              </li>
+            <% else %>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to('Logar', new_inviter_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger')  %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -41,7 +50,7 @@
     <div class="masthead container-fluid">
       <%= yield %>
     </div>
-
+    <% unless inviter_signed_in? %>
     <!-- Footer -->
     <footer class="footer text-center">
       <div class="container">
@@ -89,6 +98,7 @@
         </div>
       </div>
     </footer>
+    <% end %>
       <div class="copyright py-4 text-center text-white">
         <div class="container">
           <small>Copyright &copy; Trilist 2018</small>
