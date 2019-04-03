@@ -72,7 +72,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      :user_name => "apikey",
+      :user_name => ENV['SEND_GRID_USERNAME'],
       :password => ENV['SEND_GRID_PASSWORD'],
       :domain => 'trilist.com.br',
       :address => 'smtp.sendgrid.net',
