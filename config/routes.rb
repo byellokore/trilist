@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   root to: 'events#index'
   get 'contact', to: 'static_pages#contact'
   #TODO look for a better way to not send get url params
-  get 'guests/:seo_url', to: 'guests#new_to_list'
+  get 'add_guest/:seo_url', to: 'guests#new_to_list'
   #resources :users
 end
