@@ -1,15 +1,20 @@
 <h2><%= t('.resend_confirmation_instructions') %></h2>
-
+<%= flash[:recaptcha_error] %>
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-group field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
   <div class="actions">
     <%= f.submit t('.resend_confirmation_instructions') %>
+  </div>
+  <div class="form-group">
+    <br />
+    <%= recaptcha_tags %>
+    <br />
   </div>
 <% end %>
 

@@ -10,57 +10,52 @@
       </ul>
     </div>
   <% end %>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+    <div class="form-group">
+      <%= form.label :seo_url %>
+      <%= form.text_field :seo_url, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :seo_url %>
-    <%= form.text_field :seo_url %>
-  </div>
+    <div class="form-group">
+      <%= form.label :short_url %>
+      <%= form.text_field :short_url, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :short_url %>
-    <%= form.text_field :short_url %>
-  </div>
+    <div class="form-group">
+      <%= form.label :data_do_evento     %>
+      <%= form.datetime_select :will_happen, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :will_happen %>
-    <%= form.datetime_select :will_happen %>
-  </div>
+    <div class="form-group">
+      <%= form.label :address %>
+      <%= form.text_field :address, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
+    <div class="form-group">
+      <%= form.label :abertura_da_lista %>
+      <%= form.datetime_select :open_to_registration, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :open_to_registration %>
-    <%= form.datetime_select :open_to_registration %>
-  </div>
+    <div class="form-group">
+      <%= form.label :fechamento_da_lista %>
+      <%= form.datetime_select :close_to_registration, class: "form-control" %>
+    </div>
+    <% #TODO ADD CONTACT MASK%>
+    <div class="form-group">
+      <%= form.label :contacts %>
+      <%= form.text_field :contacts, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :close_to_registration %>
-    <%= form.datetime_select :close_to_registration %>
-  </div>
+    <div class="form-group">
+      <%= form.label :local %>
+      <%= select("locale","locale_id",current_inviter.locales.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select locale'},class: "form-control") %>
+    </div>
 
-  <div class="field">
-    <%= form.label :contacts %>
-    <%= form.text_field :contacts %>
-  </div>
-
-  <div class="field">
-    <%= form.label :inviter_id %>
-    <%= form.text_field :inviter_id %>
-  </div>
-  <div class="field">
-    <%= form.label :locale %>
-    <%= select("locale","locale_id",current_inviter.locales.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select locale'}) %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="btn btn-primary actions">
+      <%= form.submit%>
+    </div>
 <% end %>

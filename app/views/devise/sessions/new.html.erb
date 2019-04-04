@@ -1,3 +1,4 @@
+<p><%= notice %></p>
 <h2><%= t('.sign_in') %></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -17,6 +18,12 @@
       <%= f.label :remember_me %>
     </div>
   <% end -%>
+
+  <div class="form-group">
+    <br />
+    <%= recaptcha_tags %>
+    <br />
+  </div>
 
   <div class="actions">
     <%= f.submit t('.sign_in') %>

@@ -20,7 +20,9 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+  <br />
   <%= recaptcha_tags %>
+  <br />
   <div class="actions">
     <%= f.submit t('.sign_up') %>
   </div>

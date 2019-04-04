@@ -35,7 +35,8 @@ class GuestsController < ApplicationController
 
     respond_to do |format|
       if @guest.save
-        format.html { redirect_to @guest, notice: 'Guest was successfully created.' }
+        seo_url = Event.where(id: @guest.event_id).pluck(:seo_url)
+        format.html { redirect_to "/add_guest/#{seo_url.first}", notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
         format.html { render :new }
