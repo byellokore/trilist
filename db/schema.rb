@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_15_235501) do
+ActiveRecord::Schema.define(version: 2019_04_04_044228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -47,7 +47,9 @@ ActiveRecord::Schema.define(version: 2019_02_15_235501) do
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "partner_id"
     t.index ["event_id"], name: "index_guests_on_event_id"
+    t.index ["partner_id"], name: "index_guests_on_partner_id"
   end
 
   create_table "inviters", force: :cascade do |t|
@@ -104,5 +106,6 @@ ActiveRecord::Schema.define(version: 2019_02_15_235501) do
 
   add_foreign_key "events", "inviters"
   add_foreign_key "guests", "events"
+  add_foreign_key "guests", "partners"
   add_foreign_key "locales", "inviters"
 end
