@@ -45,11 +45,12 @@
     <%= form.label :confirmed_at %>
     <%= form.date_select :confirmed_at %>
   </div>
-
-  <div class="field">
-    <%= form.label :events %>
-    <%= select("guest","event_id",current_inviter.events.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select Event'}) %>
-  </div>
+  <% if current_inviter %>
+    <div class="field">
+      <%= form.label :events %>
+      <%= select("guest","event_id",current_inviter.events.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select Event'}) %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

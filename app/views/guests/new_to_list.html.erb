@@ -2,7 +2,7 @@
 
     <div class="d-flex justify-content-center">
       <ul class="list-group">
-        <li class="list-group-item-primary">Data:  <%= @event.will_happen.strftime("%m/%d/%Y %T")%></li>
+        <li class="list-group-item-primary">Data:  <%= l @event.will_happen, format: :default%></li>
       </ul>
     </div>
 <%= form_with(model: @guest, local: true) do |form| %>
@@ -40,6 +40,11 @@
 
   <%#= form.label :location %>
   <%= form.hidden_field :location %>
+
+  <div class="form-group">
+    <%= form.label :promoter %>
+    <%= form.select("partner_id",@event.inviter.partners.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecionar Promoter'},class: "form-control") %>
+  </div>
 
   <%#= form.label :event %>
   <%= form.hidden_field :event_id, value:@event.id %>

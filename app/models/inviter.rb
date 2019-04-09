@@ -5,4 +5,5 @@ class Inviter < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :confirmable
   has_many :events
   has_many :locales
+  has_many :partners
 end

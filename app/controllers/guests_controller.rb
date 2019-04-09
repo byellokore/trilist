@@ -90,12 +90,12 @@ class GuestsController < ApplicationController
     end
 
     def set_list
-      @event = Event.find_by(seo_url: params[:seo_url])
+      @event = Event.includes(inviter: [:partners]).find_by(seo_url: params[:seo_url])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:name, :email, :cellphone, :birthday, :location, :confirmation_token, :confirmed_at, :event_id)
+      params.require(:guest).permit(:name, :email, :cellphone, :birthday, :location, :confirmation_token, :confirmed_at, :event_id, :partner_id)
     end
 
     def check_captcha
