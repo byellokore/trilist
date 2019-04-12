@@ -2,7 +2,7 @@
 @import "variables.scss";
 
 .masthead {
-  padding-top: calc(6rem + 42px) !important;
+  padding-top: calc(7rem + 42px) ;
   padding-bottom: 6rem;
   height: 100vh;
   h1 {
@@ -16,7 +16,7 @@
 }
 @media (min-width: 992px) {
   .masthead {
-    padding-top: calc(6rem + 76px);
+    padding-top: calc(7rem + 76px);
     padding-bottom: 6rem;
     h1 {
       font-size: 4.75em;
