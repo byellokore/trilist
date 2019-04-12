@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_inviter!
+  before_action :check_event, only:[:show, :destroy, :update, :edit]
   # GET /events
   # GET /events.json
   def index
@@ -71,5 +72,11 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:name, :seo_url, :short_url, :will_happen, :address, :open_to_registration, :close_to_registration, :contacts, :inviter_id)
+    end
+
+    def check_event
+      unless current_inviter.id == @event.inviter_id
+        redirect_to events_url
+      end
     end
 end
