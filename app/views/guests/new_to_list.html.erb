@@ -45,7 +45,8 @@
     <%= form.label :promoter %>
     <%= form.select("partner_id",@event.inviter.partners.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecionar Promoter'},class: "form-control") %>
   </div>
-
+  <vaadin-date-picker label="Date" placeholder="Pick a date">
+  </vaadin-date-picker>
   <%#= form.label :event %>
   <%= form.hidden_field :event_id, value:@event.id %>
 

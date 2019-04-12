@@ -7,9 +7,9 @@
     "jquery": "^3.3.1",
     "popper": "^1.0.1",
     "popper.js": "^1.14.7",
+    "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.2-1",
-    "turbolinks": "^5.2.0",
-    "rails-erb-loader": "^5.5.2"
+    "turbolinks": "^5.2.0"
   },
   "devDependencies": {
     "rails-erb-loader": "^5.5.2",
