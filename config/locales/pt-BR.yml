@@ -1,4 +1,5 @@
 pt-BR:
+  editing_event: "Editar Evento"
   activerecord:
     errors:
       messages:

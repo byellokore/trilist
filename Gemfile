@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.5.3'#, :engine => 'jruby', :engine_version => '9.2.5.0'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
@@ -35,6 +36,7 @@ gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'pg'
+#gem 'activerecord-jdbcpostgresql-adapter', '~> 52.0',:platform => :jruby
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 #gem 'tiny_tds'
@@ -47,7 +49,7 @@ gem 'devise-i18n'
 # gem 'capistrano-rails', group: :development
 #gem 'slack-notifier'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+#gem 'bootsnap', '>= 1.1.0', require: false
 gem 'recaptcha', require: 'recaptcha/rails'
 
 #web packer for stimulus for now

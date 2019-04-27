@@ -16,4 +16,11 @@
 // const imagePath = (name) => images(name, true)
 import '../application/javascripts/index.js.erb';
 console.log('Hello World from Webpacker')
+import "controllers"
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
+import "@stimulus/polyfills"
 
+const application = Application.start()
+const context = require.context("../controllers", true, /\.js$/)
+application.load(definitionsFromContext(context))
