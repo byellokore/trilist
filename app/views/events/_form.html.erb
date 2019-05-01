@@ -17,7 +17,7 @@
 
     <div class="form-group">
       <%= form.label :seo_url %>
-      <%= form.text_field :seo_url, class: "form-control" %>
+      <%= form.text_field :seo_url, class: "form-control", :disabled => true %>
     </div>
 
     <div class="form-group">
@@ -25,11 +25,9 @@
       <%= form.text_field :short_url, class: "form-control" %>
     </div>
 
-    <div class="form-group">
+    <div class="form-group ">
       <%= form.label :data_do_evento     %>
-      <%= form.datetime_select :will_happen, class: "form-control" %>
-    </div>
-
+      <%= form.datetime_select :will_happen, class: "form-control"  %>
     <div class="form-group">
       <%= form.label :address %>
       <%= form.text_field :address, class: "form-control" %>
@@ -55,7 +53,7 @@
       <%= select("locale","locale_id",current_inviter.locales.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select locale'},class: "form-control") %>
     </div>
 
-    <div class="btn btn-primary actions">
-      <%= form.submit%>
+    <div class="actions">
+      <%= form.submit t :edit_event, class: "btn btn-primary" %>
     </div>
 <% end %>

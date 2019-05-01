@@ -8,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "html-webpack-plugin": "^3.2.0",
     "jquery": "^3.3.1",
+    "pc-bootstrap4-datetimepicker": "^4.17.50",
     "popper": "^1.0.1",
     "popper.js": "^1.14.7",
     "rails-erb-loader": "^5.5.2",

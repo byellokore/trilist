@@ -1,5 +1,6 @@
 pt-BR:
   editing_event: "Editar Evento"
+  edit_event: "Salvar"
   activerecord:
     errors:
       messages:
