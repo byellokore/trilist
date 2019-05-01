@@ -10,20 +10,28 @@
       </ul>
     </div>
   <% end %>
+  <div data-controller="party">
+
     <div class="form-group">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control" %>
+      <%= form.text_field :name, class: "form-control", data: { target: "party.name", action: "keyup->party#seoLink"} %>
     </div>
 
-    <div class="form-group">
-      <%= form.label :seo_url %>
-      <%= form.text_field :seo_url, class: "form-control", :disabled => true %>
+    <div class="form-inline">
+      <%= form.label :Link_url %>
+      <div class="form-group mx-sm-3">
+        <%= form.text_field :seo_url, class: "form-control", :readonly => true, data: { target: "party.link"} %>
+      </div>
+      <div class="form-group mx-sm-9">
+        <button type="button" data-action="party#copy" class="btn btn-outline-dark form-control"><%= t :copy %></button>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= form.label :short_url %>
-      <%= form.text_field :short_url, class: "form-control" %>
-    </div>
+  </div>
+    <!--div class="form-group">
+      <%#= form.label :short_url %>
+      <%#= form.text_field :short_url, class: "form-control" %>
+    </div-->
 
     <div class="form-group ">
       <%= form.label :data_do_evento     %>
