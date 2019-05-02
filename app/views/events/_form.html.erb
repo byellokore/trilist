@@ -14,13 +14,15 @@
 
     <div class="form-group">
       <%= form.label :name %>
-      <%= form.text_field :name, class: "form-control", data: { target: "party.name", action: "keyup->party#seoLink"} %>
+      <%= form.text_field :name, class: "form-control", data: { target: "party.name",
+                                                                action: "keyup->party#seoLink keyup->party#seoUrl"} %>
     </div>
 
     <div class="form-inline">
       <%= form.label :Link_url %>
       <div class="form-group mx-sm-3">
-        <%= form.text_field :seo_url, class: "form-control", :readonly => true, data: { target: "party.link"} %>
+        <%= form.text_field :link_url, class: "form-control", :readonly => true, data: { target: "party.link"}, value: "#{request.host}/add_guest/#{@event.seo_url}" %>
+        <%= form.hidden_field :seo_url, class: "form-control", :readonly => true, data: { target: "party.seo"} %>
       </div>
       <div class="form-group mx-sm-9">
         <button type="button" data-action="party#copy" class="btn btn-outline-dark form-control"><%= t :copy %></button>

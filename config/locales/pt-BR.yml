@@ -2,6 +2,7 @@ pt-BR:
   editing_event: "Editar Evento"
   edit_event: "Salvar"
   copy: "copiar"
+  cellphone_or_email_validation: "Você deve informar seu Telefone ou Email"
   activerecord:
     errors:
       messages:
@@ -9,6 +10,7 @@ pt-BR:
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
+        cellphone_or_email_validation: "Você deve informar seu Telefone ou Email"
   date:
     abbr_day_names:
       - Dom

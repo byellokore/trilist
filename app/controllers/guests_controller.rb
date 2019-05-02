@@ -32,14 +32,15 @@ class GuestsController < ApplicationController
   # POST /guests.json
   def create
     @guest = Guest.new(guest_params)
-
+    seo_url = Event.where(id: @guest.event_id).pluck(:seo_url)
+    @event = Event.includes(inviter: [:partners]).find_by(seo_url: seo_url)
     respond_to do |format|
       if @guest.save
-        seo_url = Event.where(id: @guest.event_id).pluck(:seo_url)
         format.html { redirect_to "/add_guest/#{seo_url.first}", notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
-        format.html { render :new }
+        seo_url = Event.where(id: @guest.event_id).pluck(:seo_url)
+        format.html { render :new_to_list }
         format.json { render json: @guest.errors, status: :unprocessable_entity }
       end
     end
@@ -95,7 +96,7 @@ class GuestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:name, :email, :cellphone, :birthday, :location, :confirmation_token, :confirmed_at, :event_id, :partner_id)
+      params.require(:guest).permit(:seo_url, :name, :email, :cellphone, :birthday, :location, :confirmation_token, :confirmed_at, :event_id, :partner_id)
     end
 
     def check_captcha
