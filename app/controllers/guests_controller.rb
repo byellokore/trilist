@@ -1,7 +1,6 @@
 class GuestsController < ApplicationController
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
   before_action :set_list, only: [:new_to_list]
-  before_action :authenticate_inviter!, only: [:update, :delete]
   before_action :authenticate_inviter!, only:[:index, :show, :edit, :update, :destroy]
   #prepend_before_action :check_captcha, only:[:create] # Change this to be any actions you want to protect.
   # GET /guests
@@ -107,6 +106,7 @@ class GuestsController < ApplicationController
                                     :confirmation_token,
                                     :confirmed_at,
                                     :event_id,
-                                    :partner_id)
+                                    :partner_id,
+                                    :surname)
     end
 end

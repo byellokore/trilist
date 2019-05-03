@@ -5,7 +5,7 @@ class Guest < ApplicationRecord
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, allow_nil: true
   validates :cellphone, presence: true, length: { minimum: 11, maximum: 15 }
   #validate :cellphone_xor_email
-
+  validates :surname, presence: true, length: { minimum: 3 }, allow_nil: false
   private
 
   def cellphone_xor_email

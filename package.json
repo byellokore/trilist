@@ -14,7 +14,8 @@
     "rails-erb-loader": "^5.5.2",
     "rails-ujs": "^5.2.2-1",
     "stimulus": "^1.1.1",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "yarn": "^1.15.2"
   },
   "devDependencies": {
     "rails-erb-loader": "^5.5.2",
