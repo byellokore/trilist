@@ -242,6 +242,10 @@ GEM
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    skylight (3.1.5)
+      skylight-core (= 3.1.5)
+    skylight-core (3.1.5)
+      activesupport (>= 4.2.0)
     slack-notifier (2.3.2)
     spoon (0.0.6)
       ffi
@@ -321,6 +325,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq
+  skylight
   slack-notifier
   spring
   spring-watcher-listen (~> 2.0.0)
