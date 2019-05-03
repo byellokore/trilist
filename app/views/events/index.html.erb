@@ -18,7 +18,7 @@
       <% @events.each do |event| %>
         <tr>
           <td><%= event.name %></td>
-          <td><%= event.seo_url %></td>
+          <td><a href="/add_guest/<%= event.seo_url %>" target="_blank"><%= event.seo_url %></a></td>
           <td><%= event.will_happen %></td>
           <td><%= event.open_to_registration %></td>
           <td><%= event.close_to_registration %></td>
