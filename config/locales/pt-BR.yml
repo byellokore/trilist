@@ -1,5 +1,10 @@
 pt-BR:
   editing_event: "Editar Evento"
+  edit: "Editar"
+  destroy: "Excluir"
+  confirm_destroy: "Tem certeza que quer deletar?"
+  events: "Eventos"
+  new_event: "Criar Evento"
   edit_event: "Salvar"
   copy: "copiar"
   cellphone_or_email_validation: "Você deve informar seu Telefone ou Email"
@@ -225,3 +230,6 @@ pt-BR:
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
     pm: ''
+  recaptcha:
+    errors:
+      verification_failed: 'Não foi possível confirmar o captcha!'

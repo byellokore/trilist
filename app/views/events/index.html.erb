@@ -1,16 +1,16 @@
 <div class="container-fluid">
   <p id="notice"><%= notice %></p>
-    <h1>Events</h1>
+    <h1><%=t :events %></h1>
     <br>
-    <table class="table-responsive table-borderless">
+  <div class="table-responsive d-flex">
+    <table class="table table-sm">
       <thead>
       <tr>
         <th>Evento</th>
-        <th>Seo url</th>
-        <th>Short url</th>
-        <th>Will happen</th>
-        <th>Open to registration</th>
-        <th>Close to registration</th>
+        <th>Link Lista</th>
+        <th>Data</th>
+        <th>Abertura da Lista</th>
+        <th>Fechamento da Lista</th>
         <th colspan="2"></th>
       </tr>
       </thead>
@@ -19,16 +19,16 @@
         <tr>
           <td><%= event.name %></td>
           <td><%= event.seo_url %></td>
-          <td><%= event.short_url %></td>
           <td><%= event.will_happen %></td>
           <td><%= event.open_to_registration %></td>
           <td><%= event.close_to_registration %></td>
-          <td><%= link_to 'Edit', edit_event_path(event) %></td>
-          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to (t :edit), edit_event_path(event) %></td>
+          <td><%= link_to (t :destroy), event, method: :delete, data: { confirm: (t :confirm_destroy) } %></td>
         </tr>
       <% end %>
       </tbody>
     </table>
+  </div>
     <br>
 </div>
-<%= link_to 'New Event', new_event_path %>
+<%= link_to (t :new_event), new_event_path %>

@@ -2,7 +2,7 @@ class GuestsController < ApplicationController
   before_action :set_guest, only: [:show, :edit, :update, :destroy]
   before_action :set_list, only: [:new_to_list]
   before_action :authenticate_inviter!, only:[:index, :show, :edit, :update, :destroy]
-  #prepend_before_action :check_captcha, only:[:new_to_list] # Change this to be any actions you want to protect.
+  #prepend_before_action :check_captcha, only:[:create] # Change this to be any actions you want to protect.
   # GET /guests
   # GET /guests.json
   def index
@@ -35,8 +35,9 @@ class GuestsController < ApplicationController
     seo_url = Event.where(id: @guest.event_id).pluck(:seo_url)
     @event = Event.includes(inviter: [:partners]).find_by(seo_url: seo_url)
     respond_to do |format|
-      if @guest.save
-        format.html { redirect_to "/add_guest/#{seo_url.first}", notice: 'Guest was successfully created.' }
+      if verify_recaptcha(model: @guest) && @guest.save
+        flash[:notice] = "#{@guest.name} você esta na lista!"
+        format.html { redirect_to "/add_guest/#{seo_url.first}" }
         format.json { render :show, status: :created, location: @guest }
       else
         seo_url = Event.where(id: @guest.event_id).pluck(:seo_url)
@@ -96,17 +97,15 @@ class GuestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:seo_url, :name, :email, :cellphone, :birthday, :location, :confirmation_token, :confirmed_at, :event_id, :partner_id)
-    end
-
-    def check_captcha
-      unless verify_recaptcha
-        self.resource = resource_class.new sign_up_params
-        resource.validate # Look for any other validation errors besides Recaptcha
-        set_minimum_password_length
-        #puts resource.class
-        #puts resource.methods
-        respond_with_navigational(resource) { render :new }
-      end
+      params.require(:guest).permit(:seo_url,
+                                    :name,
+                                    :email,
+                                    :cellphone,
+                                    :birthday,
+                                    :location,
+                                    :confirmation_token,
+                                    :confirmed_at,
+                                    :event_id,
+                                    :partner_id)
     end
 end

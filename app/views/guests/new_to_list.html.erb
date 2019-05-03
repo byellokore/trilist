@@ -1,10 +1,24 @@
-<h1><%= @event.name %></h1>
-
+<% if flash[:notice] %>
+  <div id="main-adviser" class="alert alert-success %>"><%= flash[:notice] %></div>
+<% end %>
+<div class="d-flex p-2 justify-content-center">
+  <h1><%= @event.name %></h1>
+</div>
     <div class="d-flex justify-content-center">
-      <ul class="list-group">
-        <li class="list-group-item-primary">Data:  <%= l @event.will_happen, format: :default%></li>
+      <ul class="list-group list-unstyled">
+        <li class="list-group-item">Data do Evento
+          <span class="badge badge-info">
+            <%= l @event.will_happen, format: :short%>
+          </span>
+        </li>
+        <li class="list-group-item">Lista aberta até
+          <span class="badge badge-danger">
+            <%= l @event.open_to_registration, format: :short%>
+          </span>
+        </li>
       </ul>
     </div>
+
 <%= form_with(model: @guest, local: true) do |form| %>
   <% if @guest.errors.any? %>
     <div id="error_explanation">
@@ -45,12 +59,13 @@
     <%= form.label :promoter %>
     <%= form.select("partner_id",@event.inviter.partners.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecionar Promoter'},class: "form-control") %>
   </div>
-  <vaadin-date-picker label="Date" placeholder="Pick a date">
-  </vaadin-date-picker>
   <%#= form.label :event %>
   <%= form.hidden_field :event_id, value:@event.id %>
+  <div class="form-group">
+    <%= recaptcha_tags hl: I18n.locale%>
+  </div>
 
   <div class="btn btn-primary actions">
-    <%= form.submit "Adicionar na lista" %>
+    <%= form.submit "Incluir na lista" %>
   </div>
 <% end %>

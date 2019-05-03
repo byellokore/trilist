@@ -13,7 +13,7 @@
   <div data-controller="party">
 
     <div class="form-group">
-      <%= form.label :name %>
+      <%= form.label :evento %>
       <%= form.text_field :name, class: "form-control", data: { target: "party.name",
                                                                 action: "keyup->party#seoLink keyup->party#seoUrl"} %>
     </div>
@@ -39,7 +39,7 @@
       <%= form.label :data_do_evento     %>
       <%= form.datetime_select :will_happen, class: "form-control"  %>
     <div class="form-group">
-      <%= form.label :address %>
+      <%= form.label :local %>
       <%= form.text_field :address, class: "form-control" %>
     </div>
 
