@@ -1,5 +1,6 @@
 class PartnersController < ApplicationController
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_inviter!
 
   # GET /partners
   # GET /partners.json

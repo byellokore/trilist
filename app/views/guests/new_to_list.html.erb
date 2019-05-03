@@ -57,7 +57,7 @@
 
   <div class="form-group">
     <%= form.label :promoter %>
-    <%= form.select("partner_id",@event.inviter.partners.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecionar Promoter'},class: "form-control") %>
+    <%= form.select("partner_id",@event.inviter.partners.collect {|p| [ p.name, p.id ] }, {prompt: 'Nenhum'},class: "form-control") %>
   </div>
   <%#= form.label :event %>
   <%= form.hidden_field :event_id, value:@event.id %>
