@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Locales</h1>
-
-<table>
+<h1>Meus Locais</h1>
+<div class="table-responsive d-flex">
+<table class="table-sm">
   <thead>
     <tr>
       <th>Name</th>
@@ -20,14 +20,14 @@
         <td><%= locale.address %></td>
         <td><%= locale.city %></td>
         <td><%= locale.zip_code %></td>
-        <td><%= link_to 'Show', locale %></td>
-        <td><%= link_to 'Edit', edit_locale_path(locale) %></td>
-        <td><%= link_to 'Destroy', locale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalhes', locale %></td>
+        <td><%= link_to (t :edit), edit_locale_path(locale) %></td>
+        <td><%= link_to (t :destroy), locale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
-<%= link_to 'New Locale', new_locale_path %>
+<%= link_to 'Criar Local', new_locale_path %>

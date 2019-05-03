@@ -25,15 +25,15 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#Entrar">Entrar</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">Sobre</a>
             </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="">Contato</a>
-            </li>
             <% if inviter_signed_in? %>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%=link_to('Promoters', partners_path, class: "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger") %>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%=link_to('Meus Locais', locales_path, class: "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger") %>
+              </li>
               <li class="nav-item mx-0 mx-lg-1">
                 <%= link_to('Desconectar', destroy_inviter_session_path, method: :delete, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger' ) %>
               </li>
