@@ -1,3 +1,4 @@
+<% if Gem.win_platform? %>
 module.exports = {
   test: /\.erb$/,
   enforce: 'pre',
@@ -9,3 +10,17 @@ module.exports = {
     }
   }]
 }
+<% else %>
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.erb$/,
+        enforce: 'pre',
+        loader: 'rails-erb-loader'
+      },
+    ]
+  }
+}
+};
+<% end %>
