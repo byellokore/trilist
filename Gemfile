@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'#, :engine => 'jruby', :engine_version => '9.2.5.0'
+ruby '2.6.3'#, :engine => 'jruby', :engine_version => '9.2.5.0'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -37,12 +37,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'pg'
 #gem 'activerecord-jdbcpostgresql-adapter', '~> 52.0',:platform => :jruby
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+# Use Image Resize
+gem 'image_processing', '~> 1.2'
 #gem 'tiny_tds'
 # Font Awesome
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
-gem 'sidekiq'
+#gem 'sidekiq'
 gem 'devise-i18n'
 #gem 'pdf-reader'
 # Use Capistrano for deployment

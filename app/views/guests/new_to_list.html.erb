@@ -4,19 +4,22 @@
 <div class="d-flex p-2 justify-content-center">
   <h1><%= @event.name %></h1>
 </div>
-    <div class="d-flex justify-content-center">
-      <ul class="list-group list-unstyled">
-        <li class="list-group-item">Data do Evento
-          <span class="badge badge-info">
-            <%= l @event.will_happen, format: :short%>
+    <div class="d-flex bg-light justify-content-center">
+      <div class="p-2">
+        <%= image_tag @event.flyer.variant(resize: "325X450"), class: "img-fluid" unless !@event.flyer.variable?%>
+      </div>
+        <ul class="list-group list-unstyled align-self-center">
+          <li class="list-group-item">Data do Evento
+            <span class="badge badge-info">
+            <%= l @event.will_happen, format: :long_with_week%>
           </span>
-        </li>
-        <li class="list-group-item">Lista aberta até
-          <span class="badge badge-danger">
-            <%= l @event.close_to_registration, format: :short%>
+          </li>
+          <li class="list-group-item">Lista aberta até
+            <span class="badge badge-danger">
+            <%= l @event.close_to_registration, format: :long_with_week%>
           </span>
-        </li>
-      </ul>
+          </li>
+        </ul>
     </div>
 
 <%= form_with(model: @guest, local: true) do |form| %>

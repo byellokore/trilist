@@ -19,9 +19,9 @@
         <tr>
           <td><%= event.name %></td>
           <td><a href="/add_guest/<%= event.seo_url %>" target="_blank"><%= event.seo_url %></a></td>
-          <td><%= event.will_happen %></td>
-          <td><%= event.open_to_registration %></td>
-          <td><%= event.close_to_registration %></td>
+          <td><%= l event.will_happen, format: :long_with_week %></td>
+          <td><%= l event.open_to_registration, format: :long_with_week %></td>
+          <td><%= l event.close_to_registration, format: :long_with_week %></td>
           <td><%= link_to (t :edit), edit_event_path(event) %></td>
           <td><%= link_to (t :destroy), event, method: :delete, data: { confirm: (t :confirm_destroy) } %></td>
         </tr>

@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = current_inviter.events.includes(:guests)
+    @events = current_inviter.events.includes(:guests).order(will_happen: :desc)
   end
 
   # GET /events/1
@@ -71,7 +71,16 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :seo_url, :short_url, :will_happen, :address, :open_to_registration, :close_to_registration, :contacts, :inviter_id)
+      params.require(:event).permit(:name,
+                                    :seo_url,
+                                    :short_url,
+                                    :will_happen,
+                                    :address,
+                                    :open_to_registration,
+                                    :close_to_registration,
+                                    :contacts,
+                                    :inviter_id,
+                                    :flyer)
     end
 
     def check_event

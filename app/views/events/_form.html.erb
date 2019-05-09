@@ -9,30 +9,28 @@
       </ul>
     </div>
   <% end %>
+  <div class="d-flex">
+    <%= image_tag event.flyer.variant(resize: "325X450"), class: "img-fluid" unless !event.flyer.variable?%>
+  </div>
   <div data-controller="party">
 
     <div class="form-group">
       <%= form.label :evento %>
-      <%= form.text_field :name, class: "form-control", data: { target: "party.name",
-                                                                action: "keyup->party#seoLink keyup->party#seoUrl"} %>
+      <%= form.text_field :name, class: "form-control", data: { target: "party.name", action: "keyup->party#seoLink keyup->party#seoUrl"} %>
     </div>
 
     <div class="form-inline">
-      <%= form.label :Link_url %>
-      <div class="form-group mx-sm-3">
-        <%= form.text_field :link_url, class: "form-control", :readonly => true, data: { target: "party.link"}, value: "#{request.host}/add_guest/#{@event.seo_url}" %>
-        <%= form.hidden_field :seo_url, class: "form-control", :readonly => true, data: { target: "party.seo"} %>
-      </div>
-      <div class="form-group mx-sm-9">
-        <button type="button" data-action="party#copy" class="btn btn-outline-dark form-control"><%= t :copy %></button>
-      </div>
-    </div>
+        <%= form.label :link_url, class: "mr-sm-2" %>
 
-  </div>
-    <!--div class="form-group">
-      <%#= form.label :short_url %>
-      <%#= form.text_field :short_url, class: "form-control" %>
-    </div-->
+        <%= form.text_field :link_url, class: "form-control w-75 mb-6 mr-sm-2 mb-sm-0", :readonly => true, data: { target: "party.link"}, value: "#{request.host}/add_guest/#{@event.seo_url}" %>
+        <button type="button" data-action="party#copy" class="btn btn-outline-dark"><%= t :copy %></button>
+    </div>
+      <%= form.hidden_field :seo_url, class: "form-control w-25", :readonly => true, data: { target: "party.seo"} %>
+    </div>
+    <div class="form-group">
+      <%= form.label :flyer_do_evento %>
+      <%= form.file_field :flyer, multiple: false, class: "form-control-file"%>
+    </div>
 
     <div class="form-group ">
       <%= form.label :data_do_evento     %>
