@@ -54,6 +54,8 @@ gem 'recaptcha', require: 'recaptcha/rails'
 
 #web packer for stimulus for now
 gem 'webpacker', '~> 4.x'
+
+gem "aws-sdk-s3", require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
