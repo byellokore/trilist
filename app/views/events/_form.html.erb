@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <div class="d-flex">
-    <%= image_tag event.flyer.variant(resize: "325X450"), class: "img-fluid" unless !event.flyer.variable?%>
+    <%= image_tag event.flyer.variant(resize: "325X450"), class: "img-fluid" unless !event.flyer.nil?%>
   </div>
   <div data-controller="party">
 
