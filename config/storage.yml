@@ -11,7 +11,7 @@ production:
 amazon:
    service: S3
    access_key_id: <%= ENV['AWS_KEY'] %>
-   secret_access_key: <%= ENV['AWS_SECRET_KEY'] %> 
+   secret_access_key: <%= ENV['AWS_SECRET_KEY'] %>
    region: us-east-2
    bucket: app.testbyel
 
