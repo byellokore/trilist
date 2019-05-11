@@ -42,7 +42,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :user_name => "byelwalk",
       :password => "Montreal@8",
-      :domain => 'trilists.com.br',
+      :domain => 'trilist.com.br',
       :address => 'smtp.sendgrid.net',
       :port => 587,
       :authentication => :plain,
