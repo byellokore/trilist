@@ -46,10 +46,26 @@
 </p>
 
 <ul>
-  <% @event.guests.each do |guest| %>
-   <li><%= guest.name %></li>
-  <% end %>
+
 </ul>
+
+<div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table table-striped" id="list_table">
+      <thead>
+        <th>Nome</th>
+      </thead>
+      <tbody>
+
+            <% @event.guests.each do |guest| %>
+            <tr>
+              <td><%= guest.name %></td>
+            </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

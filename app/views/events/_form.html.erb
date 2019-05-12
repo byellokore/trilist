@@ -11,7 +11,7 @@
   <% end %>
   <div class="d-flex">
     <%#TODO change to a helpers methods %>
-    <%= image_tag event.flyer.variant(resize: "325X450").processed.service_url, class: "img-fluid" unless !event.flyer.attached?%>
+    <%= image_tag event.flyer.variant(resize: "325X450"), class: "img-fluid" unless !event.flyer.attached?%>
   </div>
   <div data-controller="party">
 

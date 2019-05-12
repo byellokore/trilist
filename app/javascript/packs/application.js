@@ -14,13 +14,19 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-import '../application/javascripts/index.js.erb'
-import "controllers"
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
-import "@stimulus/polyfills"
+import Rails from 'rails-ujs';
+import Turbolinks from 'turbolinks';
+import * as ActiveStorage from 'activestorage';
 
 
-const application = Application.start()
-const context = require.context("../controllers", true, /\.js$/)
-application.load(definitionsFromContext(context))
+import { Application } from "stimulus";
+import { definitionsFromContext } from "stimulus/webpack-helpers";
+
+const application = Application.start();
+const context = require.context("controllers", true, /_controller\.js$/);
+application.load(definitionsFromContext(context));
+
+
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();
