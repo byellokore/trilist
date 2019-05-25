@@ -18,9 +18,16 @@ import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
 import * as ActiveStorage from 'activestorage';
 
-
+import "@stimulus/polyfills"
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
+
+import 'bootstrap';
+import 'datatables.net-bs4';
+import 'datatables.net-buttons-bs4';
+import 'datatables.net-keytable-bs4';
+import 'datatables.net-responsive-bs4';
+import 'datatables.net-scroller-bs4';
 
 const application = Application.start();
 const context = require.context("controllers", true, /_controller\.js$/);
@@ -30,3 +37,9 @@ application.load(definitionsFromContext(context));
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
+$(document).ready(function() {
+    $('#list_table').DataTable({
+        responsive: true,
+        paging: false
+    });
+} );

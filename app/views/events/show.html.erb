@@ -1,71 +1,41 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
-
-<p>
-  <strong>Seo url:</strong>
-  <%= @event.seo_url %>
-</p>
-
-<p>
-  <strong>Short url:</strong>
-  <%= @event.short_url %>
-</p>
-
-<p>
-  <strong>Will happen:</strong>
-  <%= @event.will_happen %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @event.address %>
-</p>
-
-<p>
-  <strong>Open to registration:</strong>
-  <%= @event.open_to_registration %>
-</p>
-
-<p>
-  <strong>Close to registration:</strong>
-  <%= @event.close_to_registration %>
-</p>
-
-<p>
-  <strong>Contacts:</strong>
-  <%= @event.contacts %>
-</p>
-
-<p>
-  <strong>Inviter:</strong>
-  <%= @event.inviter %>
-</p>
-
-<ul>
-
-</ul>
-
 <div class="container-fluid">
-  <div class="table-responsive">
-    <table class="table table-striped" id="list_table">
-      <thead>
-        <th>Nome</th>
-      </thead>
-      <tbody>
+  <p id="notice"><%= notice %></p>
 
-            <% @event.guests.each do |guest| %>
+  <p>
+    <strong>Name:</strong>
+    <%= @event.name %>
+  </p>
+
+  <p>
+    <strong>Seo url:</strong>
+    <%= @event.seo_url %>
+  </p>
+
+  <p>
+    <strong>Short url:</strong>
+    <%= @event.short_url %>
+  </p>
+
+
+
+<!--  <div class="d-flex">-->
+<!--      <div class="table-responsive">-->
+        <table class="table table-sm" id="list_table">
+          <thead>
+          <th scope="col">Nome</th>
+          </thead>
+          <tbody>
+          <% @event.guests.each do |guest| %>
             <tr>
               <td><%= guest.name %></td>
             </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
+          <% end %>
+          </tbody>
+        </table>
+<!--      </div>-->
+<!--  </div>-->
 </div>
+
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
