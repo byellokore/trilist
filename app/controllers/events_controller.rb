@@ -1,11 +1,16 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_inviter!
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :public]
+  before_action :authenticate_inviter!, :except [:public]
+  before_action :set_list, only: [:public]
   before_action :check_event, only:[:show, :destroy, :update, :edit]
   # GET /events
   # GET /events.json
   def index
     @events = current_inviter.events.includes(:guests).order(will_happen: :desc)
+  end
+
+  def public
+    
   end
 
   # GET /events/1
@@ -67,6 +72,10 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def set_list
+      @event = Event.find_by(seo_url: params[:seo_url])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

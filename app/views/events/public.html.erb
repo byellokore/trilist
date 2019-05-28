@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @event.name %>
+  </p>
+<!--  <div class="d-flex">-->
+<!--      <div class="table-responsive">-->
+    <table class="table table-sm" id="list_table" data-target="checkin.eventId" data-value="<%=@event.id %>">
+      <thead>
+      <th scope="col">Nome</th>
+      <th scope="col">-</th>
+      </thead>
+      <tbody>
+      <% @event.guests.each do |guest| %>
+        <tr>
+          <td data-target="checkin.name"><%= guest.name %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+<!--      </div>-->
+<!--  </div>-->
+</div>
+<script>
+$(document).ready(function() {
+     $('#list_table').DataTable({
+                 dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+         responsive: true,
+         paging: false     language: {
+                         "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+         }
+          columnDefs: [
+              {
+                data: null,
+                defaultContent: "",
+               targets: -1
+         }]
+    });
+});
+</script>
+

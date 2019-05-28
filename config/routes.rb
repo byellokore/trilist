@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'static_pages#contact'
   #TODO look for a better way to not send get url params
   get 'add_guest/:seo_url', to: 'guests#new_to_list'
+  get 'events/public/:seo_url', to: 'events#public'
   post 'guests/check_in/', to: 'guests#check_in'
   #resources :users
 end
