@@ -42,7 +42,7 @@ $(document).ready(function() {
         $('#list_table_public').DataTable({
           dom: 'Bfrtip',
           buttons: [
-              'copy', 'csv', 'excel', 'pdf', 'print'
+              'copy', 'csv', 'excel', 'pdf'
             ],
             responsive: true,
             paging: false,
