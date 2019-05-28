@@ -10,11 +10,14 @@
 <!--      <div class="table-responsive">-->
     <table class="table table-sm" id="list_table_public" data-target="checkin.eventId" data-value="<%=@event.id %>">
       <thead>
-      <th scope="col">Convidado</th>
       <th scope="col">-</th>
+      <th scope="col">Convidado</th>
       </thead>
       <tbody>
       <% @event.guests.each do |guest| %>
+        <tr>
+          <td><%= guest.id %></td>
+        </tr>
         <tr>
           <td><%= guest.name %></td>
         </tr>
