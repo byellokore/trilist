@@ -4,38 +4,45 @@
   <p>
     <strong>Name:</strong>
     <%= @event.name %>
+    <input name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>"/>
   </p>
-
-  <p>
-    <strong>Seo url:</strong>
-    <%= @event.seo_url %>
-  </p>
-
-  <p>
-    <strong>Short url:</strong>
-    <%= @event.short_url %>
-  </p>
-
-
-
+  <div data-controller="checkin" data-checkin-update-url="/guests/check_in/">
 <!--  <div class="d-flex">-->
 <!--      <div class="table-responsive">-->
-        <table class="table table-sm" id="list_table">
+        <table class="table table-sm" id="list_table" data-target="checkin.eventId" data-value="<%=@event.id %>">
           <thead>
           <th scope="col">Nome</th>
+          <th scope="col">-</th>
           </thead>
           <tbody>
           <% @event.guests.each do |guest| %>
             <tr>
-              <td><%= guest.name %></td>
+              <td data-target="checkin.name"><%= guest.name %></td>
+              <td>
+                <% unless guest.attended %>
+                <button type="button"
+                        class="btn btn-success btn-sm"
+                        data-target="checkin.guestAttended"
+                        data-value="<%=guest.id%>"
+                        data-name="<%=guest.name%>"
+                        data-action="checkin#setCheckin">
+                  Check-in
+                </button>
+                <% else %>
+                  <span class="badge badge-info">Check-in: <%= l guest.updated_at, format: :long_with_week%></span>
+                <% end %>
+              </td>
             </tr>
           <% end %>
           </tbody>
         </table>
 <!--      </div>-->
 <!--  </div>-->
+  </div>
 </div>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to (t :edit), edit_event_path(@event) %> |
+<%= link_to (t :back), events_path %>

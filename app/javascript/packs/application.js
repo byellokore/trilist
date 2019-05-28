@@ -38,8 +38,17 @@ Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
 $(document).ready(function() {
-    $('#list_table').DataTable({
-        responsive: true,
-        paging: false
-    });
-} );
+    // $('#list_table').DataTable({
+    //     responsive: true,
+    //     paging: false,
+    //     language: {
+    //                     "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+    //     }
+    //     // columnDefs: [
+    //     //     {
+    //     //       data: null,
+    //     //       defaultContent: "",
+    //     //       targets: -1
+    //     //     }]
+    // });
+});

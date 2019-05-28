@@ -1,7 +1,7 @@
 class GuestsController < ApplicationController
-  before_action :set_guest, only: [:show, :edit, :update, :destroy]
+  before_action :set_guest, only: [:show, :edit, :update, :destroy, :check_in]
   before_action :set_list, only: [:new_to_list]
-  before_action :authenticate_inviter!, only:[:index, :show, :edit, :update, :destroy]
+  before_action :authenticate_inviter!, only:[:index, :show, :edit, :update, :destroy, :check_in]
   #prepend_before_action :check_captcha, only:[:create] # Change this to be any actions you want to protect.
   # GET /guests
   # GET /guests.json
@@ -85,6 +85,18 @@ class GuestsController < ApplicationController
     end
   end
 
+  def check_in
+    respond_to do |format|
+      if @guest.name == params[:guest][:name]
+        if @guest.update_attribute(:attended, true)
+          format.json { render :check_in, status: :ok, location: @guest }
+        else
+          format.json { render json: @guest.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_guest
@@ -107,6 +119,7 @@ class GuestsController < ApplicationController
                                     :confirmed_at,
                                     :event_id,
                                     :partner_id,
-                                    :surname)
+                                    :surname,
+                                    :guest_id)
     end
 end

@@ -1,7 +1,9 @@
 pt-BR:
   editing_event: "Editar Evento"
   edit: "Editar"
+  back: "Voltar"
   destroy: "Excluir"
+  view: "Visualizar"
   confirm_destroy: "Tem certeza que quer deletar?"
   events: "Eventos"
   new_event: "Criar Evento"

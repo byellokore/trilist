@@ -11,7 +11,7 @@
         <th>Data</th>
         <th>Abertura da Lista</th>
         <th>Fechamento da Lista</th>
-        <th colspan="2"></th>
+        <th colspan="3"></th>
       </tr>
       </thead>
       <tbody>
@@ -22,8 +22,9 @@
           <td><%= l event.will_happen, format: :long_with_week %></td>
           <td><%= l event.open_to_registration, format: :long_with_week %></td>
           <td><%= l event.close_to_registration, format: :long_with_week %></td>
+          <td><%= link_to (t :view), event_path(event) %></td>
           <td><%= link_to (t :edit), edit_event_path(event) %></td>
-          <td><%= link_to (t :destroy), event, method: :delete, data: { confirm: (t :confirm_destroy) } %></td>
+          <td><%= link_to (t :destroy), event, method: :delete, data: { confirm:( t :confirm_destroy ) } %></td>
         </tr>
       <% end %>
       </tbody>
