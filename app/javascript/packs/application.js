@@ -40,7 +40,6 @@ ActiveStorage.start();
 $(document).ready(function() {
     $(document).ready(function() {
         $('#list_table_public').DataTable({
-          dom: 'Bfrtip',
           buttons: [
               'copy', 'csv', 'excel', 'pdf'
             ],
