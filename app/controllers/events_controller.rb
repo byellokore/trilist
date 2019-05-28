@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy, :public]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_inviter!, except: [:public]
   before_action :set_list, only: [:public]
   before_action :check_event, only:[:show, :destroy, :update, :edit]
