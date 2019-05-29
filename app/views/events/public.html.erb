@@ -18,7 +18,7 @@
       <% @event.guests.each do |guest| %>
         <tr>
           <td><%= "#{@event.id}#{guest.id}" %></td>
-          <td><%= guest.name %></td>
+          <td><%= "#{guest.name} #{guest.surname}" %></td>
           <td><%= partner_name(@event, guest) unless guest.partner_id.nil?  %></td>
         </tr>
       <% end %>
