@@ -24,7 +24,6 @@ class GuestsController < ApplicationController
     @event
     unless params[:partner_id].nil?
       @partner_id = params[:partner_id]
-      puts "#{@partner_id} TESTESSSSSSSSSS"
     end
   end
 
