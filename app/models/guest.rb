@@ -1,6 +1,5 @@
 class Guest < ApplicationRecord
   belongs_to :event
-  has_one :partner
   validates :name, presence: true, length: { minimum: 3 }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }, allow_nil: true
   validates :cellphone, presence: true, length: { minimum: 11, maximum: 15 }

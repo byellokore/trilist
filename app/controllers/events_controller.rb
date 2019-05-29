@@ -75,7 +75,7 @@ class EventsController < ApplicationController
     end
 
     def set_list
-      @event = Event.find_by(seo_url: params[:seo_url])
+      @event = Event.includes(inviter: [:partners]).find_by(seo_url: params[:seo_url])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

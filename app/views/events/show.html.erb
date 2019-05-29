@@ -15,11 +15,12 @@
           <thead>
           <th scope="col">Nome</th>
           <th scope="col">-</th>
+          <th scope="col">Promoter</th>
           </thead>
           <tbody>
           <% @event.guests.each do |guest| %>
             <tr>
-              <td data-target="checkin.name"><%= guest.name %></td>
+              <td data-target="checkin.name"><%= "#{guest.name} #{guest.surname}" %> </td>
               <td>
                 <% unless guest.attended %>
                 <button type="button"
@@ -33,6 +34,9 @@
                 <% else %>
                   <span class="badge badge-info">Check-in: <%= l guest.updated_at, format: :long_with_week%></span>
                 <% end %>
+              </td>
+              <td>
+                <%= partner_name(@event, guest) unless guest.partner_id.nil? %>
               </td>
             </tr>
           <% end %>
