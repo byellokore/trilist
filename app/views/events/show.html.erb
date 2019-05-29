@@ -13,6 +13,7 @@
 <!--      <div class="table-responsive">-->
         <table class="table table-sm" id="list_table" data-target="checkin.eventId" data-value="<%=@event.id %>">
           <thead>
+          <th scope="col">#</th>
           <th scope="col">Nome</th>
           <th scope="col">-</th>
           <th scope="col">Promoter</th>
@@ -20,6 +21,7 @@
           <tbody>
           <% @event.guests.each do |guest| %>
             <tr>
+              <td><%= "#{@event.id}#{guest.id}" %></td>
               <td data-target="checkin.name"><%= "#{guest.name} #{guest.surname}" %> </td>
               <td>
                 <% unless guest.attended %>
