@@ -57,9 +57,8 @@
 
   <div class="form-group">
     <%= form.label :data_de_nascimento %>
-    <div class='input-group date' id='birthday'>
-      <%= form.date_field :birthday, class: "form-control" %>
-    </div>
+    <%= form.date_field :birthday, class: "form-control", data: { inputmask: "'mask': '99/99/9999'"}, placeholder: "23/02/2008" %>
+
   </div>
 
   <%#= form.label :location %>

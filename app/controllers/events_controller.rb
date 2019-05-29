@@ -62,10 +62,11 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     respond_to do |format|
-      if  @event.destroy
+      begin
+      @event.destroy
         format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
         format.json { head :no_content }
-      else
+      rescue
         format.html { redirect_to events_url, notice: 'Evento Já Possui Convidados, não é possível deletar!' }
         format.json { head :no_content }
       end
