@@ -22,6 +22,7 @@ class GuestsController < ApplicationController
   def new_to_list
     @guest = Guest.new
     @event
+    @partner_id = Partner.find(params[:partner_id])
   end
 
   # GET /guests/1/edit
