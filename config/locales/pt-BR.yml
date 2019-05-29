@@ -6,6 +6,7 @@ pt-BR:
   view: "Visualizar"
   confirm_destroy: "Tem certeza que quer deletar?"
   events: "Eventos"
+  no_event_here: "Evento não existe ou possui acesso privado."
   new_event: "Criar Evento"
   edit_event: "Salvar"
   copy: "copiar"

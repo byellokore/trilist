@@ -14,7 +14,7 @@
     <%= image_tag event.flyer.variant(resize: "325X450"), class: "img-fluid" unless !event.flyer.attached?%>
   </div>
   <div data-controller="party">
-
+  <div class="container-fluid">
     <div class="form-group">
       <%= form.label :evento %>
       <%= form.text_field :name, class: "form-control", data: { target: "party.name", action: "keyup->party#seoLink keyup->party#seoUrl"} %>
@@ -61,8 +61,8 @@
       <%= form.label :local %>
       <%= select("locale","locale_id",current_inviter.locales.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select locale'},class: "form-control") %>
     </div>
-
-    <div class="actions">
-      <%= form.submit t :edit_event, class: "btn btn-primary" %>
+     <div class="form-group">
+       <%= form.submit t :edit_event, class: "btn btn-primary" %>
+     </div>
     </div>
 <% end %>
