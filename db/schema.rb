@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_023356) do
+ActiveRecord::Schema.define(version: 2019_05_29_034737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_023356) do
   create_table "guests", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.decimal "cellphone"
+    t.string "cellphone"
     t.date "birthday"
     t.json "location"
     t.string "confirmation_token"

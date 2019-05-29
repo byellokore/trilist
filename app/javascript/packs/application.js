@@ -28,6 +28,7 @@ import 'datatables.net-buttons-bs4';
 import 'datatables.net-keytable-bs4';
 import 'datatables.net-responsive-bs4';
 import 'datatables.net-scroller-bs4';
+import Inputmask from "inputmask";
 
 const application = Application.start();
 const context = require.context("controllers", true, /_controller\.js$/);
@@ -37,18 +38,18 @@ application.load(definitionsFromContext(context));
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
+
 $(document).ready(function() {
-    $(document).ready(function() {
-        $('#list_table_public,#list_table').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-              'copy', 'csv', 'excel', 'pdf'
-            ],
-            responsive: true,
-            paging: false,
-            language: {
-              "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
-            }
-        });
+    $('#list_table_public,#list_table').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+          'copy', 'csv', 'excel', 'pdf'
+        ],
+        responsive: true,
+        paging: false,
+        language: {
+          "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+        }
     });
+    Inputmask().mask(document.querySelectorAll("input"));
 });

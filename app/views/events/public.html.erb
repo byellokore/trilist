@@ -10,14 +10,16 @@
 <!--      <div class="table-responsive">-->
     <table class="table table-sm" id="list_table_public" data-target="checkin.eventId" data-value="<%=@event.id %>">
       <thead>
-      <th scope="col">-</th>
+      <th scope="col">#</th>
       <th scope="col">Convidado</th>
+      <th scope="col">Promoter</th>
       </thead>
       <tbody>
       <% @event.guests.each do |guest| %>
         <tr>
-          <td><%= guest.id %></td>
+          <td><%= "#{@event.id}#{guest.id}" %></td>
           <td><%= guest.name %></td>
+          <td><%= partner_name(@event, guest) unless guest.partner_id.nil?  %></td>
         </tr>
       <% end %>
       </tbody>
