@@ -39,7 +39,7 @@ Turbolinks.start();
 ActiveStorage.start();
 $(document).ready(function() {
     $(document).ready(function() {
-        $('#list_table_public').DataTable({
+        $('#list_table_public,#list_table').DataTable({
             dom: 'Bfrtip',
             buttons: [
               'copy', 'csv', 'excel', 'pdf'
