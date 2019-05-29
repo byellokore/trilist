@@ -15,15 +15,13 @@
           <thead>
           <th scope="col">#</th>
           <th scope="col">Nome</th>
-          <th scope="col">-</th>
           <th scope="col">Promoter</th>
           </thead>
           <tbody>
           <% @event.guests.each do |guest| %>
             <tr>
               <td><%= "#{@event.id}#{guest.id}" %></td>
-              <td data-target="checkin.name"><%= "#{guest.name} #{guest.surname}" %> </td>
-              <td>
+              <td data-target="checkin.name"><%= "#{guest.name} #{guest.surname}" %>
                 <% unless guest.attended %>
                 <button type="button"
                         class="btn btn-success btn-sm"
