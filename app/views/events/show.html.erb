@@ -32,7 +32,7 @@
                   Check-in
                 </button>
                 <% else %>
-                  <span class="badge badge-info">Check-in: <%= l guest.updated_at, format: :long_with_week%></span>
+                  <span class="badge badge-info">Check-in: <%= l guest.updated_at, format: :short%></span>
                 <% end %>
               </td>
               <td>
