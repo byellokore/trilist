@@ -23,7 +23,7 @@ class GuestsController < ApplicationController
     @guest = Guest.new
     @event
     unless params[:partner_id].nil?
-      @partner_id = Partner.find_by(id: params[:partner_id])
+      @partner_id = params[:partner_id]
     end
   end
 

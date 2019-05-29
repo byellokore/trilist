@@ -68,10 +68,11 @@
 
   <div class="form-group">
     <%= form.label :promoter %>
-    <% if @partner_id.nil?%>
+    <% partner = partner_from_list(@event, @partner_id) %>
+    <% if partner.nil? %>
       <%= form.select("partner_id",@event.inviter.partners.collect {|p| [ p.name, p.id ] }, {prompt: 'Nenhum'},class: "form-control") %>
     <% else %>
-      <%= form.select("partner_id",@partner.collect {|p| [ p.name, p.id ] }, class: "form-control") %>
+      <%= form.select("partner_id",partner.collect {|p| [ p.name, p.id ] }, class: "form-control") %>
     <% end %>  
   </div>
   <%#= form.label :event %>

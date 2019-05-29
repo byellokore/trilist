@@ -5,6 +5,7 @@
 <table class="table-responsive">
   <thead>
     <tr>
+      <th>id</th>
       <th>Email</th>
       <th>Nome</th>
       <th>Telefones</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @partners.each do |partner| %>
       <tr>
+        <td><%= partner.id %></td>
         <td><%= partner.email %></td>
         <td><%= partner.name %></td>
         <td><%= partner.phone_numbers %></td>
