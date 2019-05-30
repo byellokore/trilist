@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_034737) do
+ActiveRecord::Schema.define(version: 2019_05_30_030833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_05_29_034737) do
     t.bigint "inviter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "schema", default: {"required"=>["ingressos"], "attributes"=>{"ingressos"=>{"type"=>"array", "default"=>[]}}}, null: false
+    t.jsonb "ticket"
     t.index ["inviter_id"], name: "index_events_on_inviter_id"
   end
 
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_05_29_034737) do
     t.bigint "partner_id"
     t.string "surname"
     t.boolean "attended", default: false
+    t.string "ticket"
     t.index ["event_id"], name: "index_guests_on_event_id"
     t.index ["partner_id"], name: "index_guests_on_partner_id"
   end
