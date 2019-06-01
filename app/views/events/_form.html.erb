@@ -13,8 +13,8 @@
     <%#TODO change to a helpers methods %>
     <%= image_tag event.flyer.variant(resize: "325X450"), class: "img-fluid" unless !event.flyer.attached?%>
   </div>
-  <div data-controller="party">
   <div class="container-fluid">
+  <div data-controller="party">
     <div class="form-group">
       <%= form.label :evento %>
       <%= form.text_field :name, class: "form-control", data: { target: "party.name", action: "keyup->party#seoLink keyup->party#seoUrl"} %>
@@ -61,21 +61,19 @@
       <%= form.label :local %>
       <%= select("locale","locale_id",current_inviter.locales.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select locale'},class: "form-control") %>
     </div>
-      <%event.ticket["ingressos"].each do |ticket| %>
-       <% ticket.each do |key,value| %>
-
-       <% end %>
-      <% end %>
+    <div class="form-group">
       <%event.ticket["ingressos"].each do |ticket| %>
       <%= form.fields_for :ticket, OpenStruct.new(ticket) do |df| %>
           <% ticket.each do |key,value| %>
-              <input type="text" value="<%=key%>">
-              <%= df.text_field key %>
+              <%= form.label :ingressos %>
+              <input type="text" value="<%=key%>" class="form-control-sm">
+              <%= df.text_field key, class: "form-control-sm" %>
           <% end %>
       <% end %>
       <% end %>
+    </div>
      <div class="form-group">
-       <%= form.submit t :edit_event, class: "btn btn-primary" %>
+       <%= form.submit t :edit_event, html: { class: "btn btn-primary" } %>
      </div>
     </div>
 <% end %>

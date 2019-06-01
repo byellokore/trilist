@@ -1,3 +1,7 @@
+<% provide(:title, "#{@event.name} - Dia #{(l @event.will_happen, format: :short)} ") %>
+<% set_meta_tags description: "#{@event.name} Adicionar nome na lista do evento.",
+                 keywords: "#{@event.name}, Lista, Festa, favorita, balada",
+                 og: { title: "#{@event.name} - Trilist", type: 'website' } %>
 <% if flash[:notice] %>
   <div id="main-adviser" class="alert alert-success %>"><%= flash[:notice] %></div>
 <% end %>
