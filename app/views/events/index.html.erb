@@ -19,7 +19,7 @@
       <% @events.each do |event| %>
         <tr>
           <td><%= event.name %></td>
-          <td><a href="/add_guest/<%= event.seo_url %>" target="_blank"><%= t :view %></a></td>
+          <td><a href="/nalista/<%= event.seo_url %>" target="_blank"><%= t :view %></a></td>
           <td><a href="events/public/<%= event.seo_url %>" target="_blank"><%= t :view %></a></td>
           <td><%= l event.will_happen, format: :long_with_week %></td>
           <td><%= l event.open_to_registration, format: :long_with_week %></td>

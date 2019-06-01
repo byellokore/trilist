@@ -4,7 +4,7 @@ export default class extends Controller {
     static targets = [ "link", "name", "seo" ]
 
     seoLink(){
-        this.linkTarget.value = "https://www.trilist.com.br/add_guest/" +
+        this.linkTarget.value = "https://www.trilist.com.br/nalista/" +
                                 this.nameTarget.value.toLowerCase()
                                 .replace(/\s/g,'-')
                                 .normalize('NFD').replace(/[\u0300-\u036f]/g, "");

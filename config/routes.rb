@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   root to: 'events#index'
   get 'contact', to: 'static_pages#contact'
   #TODO look for a better way to not send get url params
+  get 'nalista/:seo_url', to: 'guests#new_to_list'
+  get 'nalista/:seo_url/promoter/:partner_id', to: 'guests#new_to_list'
   get 'add_guest/:seo_url', to: 'guests#new_to_list'
   get 'add_guest/:seo_url/promoter/:partner_id', to: 'guests#new_to_list'
   get 'events/public/:seo_url', to: 'events#public'
