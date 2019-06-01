@@ -1,5 +1,5 @@
 <% provide(:title, "#{@event.name} - Dia #{(l @event.will_happen, format: :short)} ") %>
-<% set_meta_tags description: "#{@event.name} Adicionar nome na lista do evento.",
+<% set_meta_tags description: "#{@event.name} Dia #{(l @event.will_happen, format: :short)} - Adicione seu nome na lista do evento!",
                  keywords: "#{@event.name}, Lista, Festa, favorita, balada",
                  og: { title: "#{@event.name} - Trilist", type: 'website', url: request.url } %>
 <% unless !@event.flyer.attached? %>
