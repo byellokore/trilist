@@ -1,7 +1,10 @@
 <% provide(:title, "#{@event.name} - Dia #{(l @event.will_happen, format: :short)} ") %>
 <% set_meta_tags description: "#{@event.name} Adicionar nome na lista do evento.",
                  keywords: "#{@event.name}, Lista, Festa, favorita, balada",
-                 og: { title: "#{@event.name} - Trilist", type: 'website' } %>
+                 og: { title: "#{@event.name} - Trilist", type: 'website', url: request.url } %>
+<% unless !@event.flyer.attached? %>
+   <% set_meta_tags og: {   image:  url_for(@event.flyer) } %>
+<% end %>
 <% if flash[:notice] %>
   <div id="main-adviser" class="alert alert-success %>"><%= flash[:notice] %></div>
 <% end %>
