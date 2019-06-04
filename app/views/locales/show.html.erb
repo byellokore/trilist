@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%=(t :locale) %></strong>
   <%= @locale.name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong><%=(t :address) %></strong>
   <%= @locale.address %>
 </p>
 
 <p>
-  <strong>City:</strong>
+  <strong><%=(t :city) %></strong>
   <%= @locale.city %>
 </p>
 
 <p>
-  <strong>Zip code:</strong>
+  <strong><%=(t :zip_code) %></strong>
   <%= @locale.zip_code %>
 </p>
 
-<%= link_to 'Edit', edit_locale_path(@locale) %> |
-<%= link_to 'Back', locales_path %>
+<%= link_to (t :view), edit_locale_path(@locale) %> |
+<%= link_to (t :back), locales_path %>

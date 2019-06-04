@@ -1,4 +1,4 @@
-<%= form_with(model: locale, local: true) do |form| %>
+<%= form_with(model: locale) do |form| %>
   <% if locale.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(locale.errors.count, "error") %> prohibited this locale from being saved:</h2>
@@ -11,28 +11,26 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label t :locale %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+  <div class="form-group">
+    <%= form.label (t :address) %>
+    <%= form.text_field :address, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
+  <div class="form-group">
+    <%= form.label (t :city) %>
+    <%= form.text_field :city, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :zip_code %>
-    <%= form.text_field :zip_code %>
+  <div class="form-group">
+    <%= form.label (t :zip_code) %>
+    <%= form.text_field :zip_code, class: 'form-control' %>
   </div>
-  <%= hidden_field :inviter_id, current_inviter.id.to_s %>
+  <%= form.hidden_field :inviter_id, value: current_inviter.id.to_s %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit (t :save), class: "btn btn-primary actions" %>
 <% end %>

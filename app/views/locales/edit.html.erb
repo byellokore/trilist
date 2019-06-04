@@ -1,6 +1,6 @@
-<h1>Editing Locale</h1>
+<h1><%= (t :editing_locale) %></h1>
 
 <%= render 'form', locale: @locale %>
 
-<%= link_to 'Show', @locale %> |
-<%= link_to 'Back', locales_path %>
+<%= link_to (t :view), @locale %> |
+<%= link_to (t :back), locales_path %>
