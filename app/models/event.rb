@@ -1,14 +1,14 @@
 class Event < ApplicationRecord
   store_accessor :schema, :required, :attributes
-  serialize :ticket
+  store_accessor  :preferences, :tickets
 
   belongs_to :inviter
   has_many :guests
   has_one :locale
   has_one_attached :flyer
   validates_uniqueness_of :seo_url
-  after_initialize :define_default_values
-  before_validation :validate_from_schema
+  #after_initialize :define_default_values
+  #before_validation :validate_from_schema
 
   private
 

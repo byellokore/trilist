@@ -1,5 +1,5 @@
-<h1>New Locale</h1>
+<h1><%=(t :new_locale) %></h1>
 
 <%= render 'form', locale: @locale %>
 
-<%= link_to 'Back', locales_path %>
+<%= link_to (t :back), locales_path %>

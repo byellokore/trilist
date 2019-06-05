@@ -15,9 +15,10 @@ pt-BR:
   save: "Salvar"
   no_event_here: "Evento não existe ou possui acesso privado."
   new_event: "Criar Evento"
+  new_locale: "Criar Local"
+  add_more_ticket: "Adicionar"
   edit_event: "Salvar"
   copy: "copiar"
-  cellphone_or_email_validation: "Você deve informar seu Telefone ou Email"
   activerecord:
     errors:
       messages:
@@ -26,6 +27,7 @@ pt-BR:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
         cellphone_or_email_validation: "Você deve informar seu Telefone ou Email"
+        under_age: "Proibida a entrada de menores de 18 anos. Seu nome não foi incluído!"
   date:
     abbr_day_names:
       - Dom

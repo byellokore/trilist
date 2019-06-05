@@ -21,4 +21,9 @@ export default class extends Controller {
         this.linkTarget.select()
         document.execCommand("copy")
     }
+
+    addTicket(event){
+        let node = document.createElement("input");
+        event.target.parentNode.appendChild(node)
+    }
 }

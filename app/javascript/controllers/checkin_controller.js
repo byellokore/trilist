@@ -4,7 +4,6 @@ export default class extends Controller {
     static targets = [ "guestAttended", "eventId"]
 
     setCheckin(event) {
-        console.log();
         let formData = new FormData()
         formData.append("id", event.target.dataset.value)
         formData.append("guest[event_id]", this.eventIdTarget.dataset.value);

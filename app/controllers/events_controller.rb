@@ -95,7 +95,8 @@ class EventsController < ApplicationController
                                     :close_to_registration,
                                     :contacts,
                                     :inviter_id,
-                                    :flyer)
+                                    :flyer,
+                                    preferences: {})
     end
 
     def check_event

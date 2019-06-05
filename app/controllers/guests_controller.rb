@@ -37,10 +37,11 @@ class GuestsController < ApplicationController
     @guest = Guest.new(guest_params)
     seo_url = Event.where(id: @guest.event_id).pluck(:seo_url)
     @event = Event.includes(inviter: [:partners]).find_by(seo_url: seo_url)
+    @guest.event_will_happen = @event.will_happen
     respond_to do |format|
       if verify_recaptcha(model: @guest) && @guest.save
         flash[:notice] = "#{@guest.name} você esta na lista!"
-        format.html { redirect_to "/add_guest/#{seo_url.first}" }
+        format.html { redirect_to "/nalista/#{seo_url.first}" }
         format.json { render :show, status: :created, location: @guest }
       else
         seo_url = Event.where(id: @guest.event_id).pluck(:seo_url)
