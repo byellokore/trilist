@@ -62,8 +62,7 @@
         <%= form.label :local %>
         <%= select("locale","locale_id",current_inviter.locales.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Selecione Local'},class: "form-control") %>
       </div>
-      <div class="form-group">
-        <%#byebug %>
+      <%#byebug %>
         <%#event.preferences.each do |ticket| %>
         <%#= form.fields_for :tickets, OpenStruct.new(ticket) do |df| %>
             <%# ticket["ingressos"].each do |key,value| %>
@@ -73,13 +72,20 @@
             <%# end %>
         <%# end %>
         <%# end %>
+      <div class="form-group">
         <button type="button" data-action="party#addTicket" class="btn btn-primary btn-sm">
           <%= t :add_more_ticket %>
           <i class="m-2 fa fa-plus-circle"></i>
-        </button>
+        </button> <span>Opções de ingresso</span>
         <% event.preferences['tickets'].each do |k,v| %>
-          <%= label_tag "preferences[tickets][][#{k}][#{v}]", k %>
-          <%= text_field_tag "event[preferences][tickets][#{k}]", v %>
+          <div class="row">
+            <div class="col ticket-name">
+              <%= text_field_tag "fake[preferences][tickets][#{k}]", k, class: "form-control mt-1" %>
+            </div>
+            <div class="col ticket-value">
+              <%= text_field_tag "event[preferences][tickets][#{k}]", v, class: "form-control mt-1" %>
+            </div>
+          </div>
         <% end %>
       </div>
        <div class="form-group">

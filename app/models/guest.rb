@@ -25,7 +25,7 @@ class Guest < ApplicationRecord
   end
 
   def birthday
-    
+
   end
 
 end

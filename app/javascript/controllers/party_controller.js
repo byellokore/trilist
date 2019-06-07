@@ -23,7 +23,18 @@ export default class extends Controller {
     }
 
     addTicket(event){
-        let node = document.createElement("input");
-        event.target.parentNode.appendChild(node)
+        let ticketName = document.createElement("input");
+        let ticketValue = document.createElement("input");
+
+        ticketName.type = "text";
+        ticketName.className = "form-control mt-1";
+        ticketName.placeholder = "Ingresso";
+        ticketValue.type = "text";
+        ticketValue.className = "form-control mt-1";
+        ticketValue.placeholder = "0.00";
+
+        document.querySelector(".ticket-name").appendChild(ticketName);
+        document.querySelector(".ticket-value").appendChild(ticketValue);
+        document.querySelector(".ticket-value").insertAdjacentHTML("afterend", "<i class=\'fa fa-times\'></i>")
     }
 }
