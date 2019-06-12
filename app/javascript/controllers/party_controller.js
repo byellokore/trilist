@@ -23,18 +23,28 @@ export default class extends Controller {
     }
 
     addTicket(event){
+        let componentId = "_" + Date.now();
+        event.target.parentNode.insertAdjacentHTML("beforeend","<div id='"+ componentId + "' class='row'><div class='col ticket-name'></div><div class='col ticket-value'></div></div>");
+
         let ticketName = document.createElement("input");
         let ticketValue = document.createElement("input");
 
         ticketName.type = "text";
         ticketName.className = "form-control mt-1";
         ticketName.placeholder = "Ingresso";
+
         ticketValue.type = "text";
         ticketValue.className = "form-control mt-1";
         ticketValue.placeholder = "0.00";
 
-        document.querySelector(".ticket-name").appendChild(ticketName);
-        document.querySelector(".ticket-value").appendChild(ticketValue);
-        document.querySelector(".ticket-value").insertAdjacentHTML("afterend", "<i class=\'fa fa-times\'></i>")
+        let newRow = document.getElementById(componentId);
+        newRow.querySelector(".ticket-name").appendChild(ticketName);
+        newRow.querySelector(".ticket-value").appendChild(ticketValue);
+        newRow.querySelector(".ticket-value").insertAdjacentHTML("afterend", "<i class=\'fa fa-times\' data-action=\'click->party#removeTicket\'></i>")
+    }
+
+    removeTicket(event){
+        let ticketToRemove = event.target.parentNode
+        ticketToRemove.remove();
     }
 }

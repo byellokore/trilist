@@ -19,6 +19,7 @@ pt-BR:
   add_more_ticket: "Adicionar"
   edit_event: "Salvar"
   copy: "copiar"
+  copy_link: "copiar link"
   activerecord:
     errors:
       messages:

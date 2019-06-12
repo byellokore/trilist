@@ -21,15 +21,15 @@
         <%= form.text_field :name, class: "form-control", data: { target: "party.name", action: "keyup->party#seoLink keyup->party#seoUrl"} %>
       </div>
 
-      <div class="form-inline">
-          <%= form.label :link_url, class: "mr-sm-2" %>
+      <div class="form-inline d-inline-flex justify-content-between w-100">
+          <%#= form.label :link_url, class: "mr-1" %>
 
-          <%= form.text_field :link_url, class: "form-control w-75 mb-6 mr-sm-2 mb-sm-0", :readonly => true, data: { target: "party.link"}, value: "#{request.host}/add_guest/#{@event.seo_url}" %>
-          <button type="button" data-action="party#copy" class="btn btn-outline-dark"><%= t :copy %></button>
+          <%= form.text_field :link_url, class: "form-control w-75", :readonly => true, data: { target: "party.link"}, value: "#{request.host}/add_guest/#{@event.seo_url}" %>
+          <button type="button" data-action="party#copy" class="btn btn-outline-dark btn-sm ml-1 mw-25"><%= t :copy_link %></button>
       </div>
-      <%= form.hidden_field :seo_url, class: "form-control w-25", :readonly => true, data: { target: "party.seo"} %>
+      <%= form.hidden_field :seo_url, class: "form-control", :readonly => true, data: { target: "party.seo"} %>
 
-      <div class="form-group">
+      <div class="form-group mt-2">
         <%= form.label :flyer_do_evento %>
         <%= form.file_field :flyer, multiple: false, class: "form-control-file"%>
       </div>
@@ -72,8 +72,8 @@
             <%# end %>
         <%# end %>
         <%# end %>
-      <div class="form-group">
-        <button type="button" data-action="party#addTicket" class="btn btn-primary btn-sm">
+      <div class="form-group mt-2">
+        <button type="button" data-action="party#addTicket" class="btn btn-primary btn-sm mb-2">
           <%= t :add_more_ticket %>
           <i class="m-2 fa fa-plus-circle"></i>
         </button> <span>Opções de ingresso</span>
@@ -85,6 +85,7 @@
             <div class="col ticket-value">
               <%= text_field_tag "event[preferences][tickets][#{k}]", v, class: "form-control mt-1" %>
             </div>
+            <i class="fa fa-times" data-action="click->party#removeTicket"></i>
           </div>
         <% end %>
       </div>
