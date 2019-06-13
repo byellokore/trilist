@@ -77,20 +77,27 @@
           <%= t :add_more_ticket %>
           <i class="m-2 fa fa-plus-circle"></i>
         </button> <span>Opções de ingresso</span>
-        <% event.preferences['tickets'].each do |k,v| %>
-          <div class="row">
+        <% event.preferences['tickets'].try(:each) do |k,v| %>
+          <div class="row tickets">
             <div class="col ticket-name">
-              <%= text_field_tag "fake[preferences][tickets][#{k}]", k, class: "form-control mt-1" %>
+
+              <%= text_field_tag "fake[preferences][tickets][#{k}]",
+                                 k,
+                                 data: { action: "party#ticketKey" },
+                                 class: "form-control mt-1" %>
             </div>
             <div class="col ticket-value">
-              <%= text_field_tag "event[preferences][tickets][#{k}]", v, class: "form-control mt-1" %>
+
+              <%= text_field_tag "event[preferences][tickets][#{k}]",
+                                 v,
+                                 class: "form-control mt-1" %>
             </div>
             <i class="fa fa-times" data-action="click->party#removeTicket"></i>
           </div>
         <% end %>
       </div>
        <div class="form-group">
-         <%= form.submit t :edit_event, html: { class: "btn btn-default" } %>
+         <%= form.submit t :edit_event, html: { class: "btn btn-primary actions" } %>
        </div>
     </div>
   </div>

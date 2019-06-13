@@ -34,7 +34,7 @@
 <%= form_with(model: @guest, local: true) do |form| %>
   <% if @guest.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
+      <h2><%= pluralize(@guest.errors.count, "erro") %> prohibited this guest from being saved:</h2>
 
       <ul>
         <% @guest.errors.full_messages.each do |message| %>

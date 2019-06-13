@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   store_accessor :schema, :required, :attributes
-  store_accessor  :preferences, :tickets
+  store_accessor :preferences, :tickets
 
   belongs_to :inviter
   has_many :guests
