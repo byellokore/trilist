@@ -1,7 +1,7 @@
 class GuestsController < ApplicationController
-  before_action :set_guest, only: [:show, :edit, :update, :destroy, :check_in]
+  before_action :set_guest, only: [:show, :edit, :update, :destroy, :check_in, :ticket]
   before_action :set_list, only: [:new_to_list]
-  before_action :authenticate_inviter!, only:[:index, :show, :edit, :update, :destroy, :check_in]
+  before_action :authenticate_inviter!, only:[:index, :show, :edit, :update, :destroy, :check_in, :ticket]
   #prepend_before_action :check_captcha, only:[:create] # Change this to be any actions you want to protect.
   # GET /guests
   # GET /guests.json
@@ -93,6 +93,18 @@ class GuestsController < ApplicationController
     respond_to do |format|
       if @guest.name == params[:guest][:name]
         if @guest.update_attribute(:attended, true)
+          format.json { render :check_in, status: :ok, location: @guest }
+        else
+          format.json { render json: @guest.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+
+  def ticket
+    respond_to do |format|
+      if @guest.name == params[:guest][:name]
+        if @guest.update_attribute(:ticket, params[:guest][:ticket])
           format.json { render :check_in, status: :ok, location: @guest }
         else
           format.json { render json: @guest.errors, status: :unprocessable_entity }

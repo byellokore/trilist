@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get 'add_guest/:seo_url/promoter/:partner_id', to: 'guests#new_to_list'
   get 'events/public/:seo_url', to: 'events#public'
   post 'guests/check_in/', to: 'guests#check_in'
+  post 'guests/ticket/', to: 'guests#ticket'
   #resources :users
 end

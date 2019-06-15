@@ -8,13 +8,14 @@
            type="hidden"
            value="<%= form_authenticity_token %>"/>
   </p>
-  <div data-controller="checkin" data-checkin-update-url="/guests/check_in/">
+  <div data-controller="checkin" data-checkin-update-url="/guests/check_in/" data-checkin-ticket-url="/guests/ticket/">
 <!--  <div class="d-flex">-->
 <!--      <div class="table-responsive">-->
         <table id="list_table" class="table table-sm" data-target="checkin.eventId" data-value="<%=@event.id %>">
           <thead>
           <th scope="col">#</th>
           <th scope="col">Nome</th>
+          <th scope="col">Ingresso</th>
           <th scope="col">Promoter</th>
           </thead>
           <tbody>
@@ -33,6 +34,22 @@
                 </button>
                 <% else %>
                   <span class="badge badge-info">Check-in: <%= l guest.updated_at, format: :short%></span>
+                <% end %>
+              </td>
+              <td>
+              <% unless @event.try(:tickets) %>
+              <%= select("ticket","ticket_id",@event.try(:tickets)  {|k,v| [ k, v ] }, {prompt: 'Selecione'},class: "form-control ticket-type") %>
+              <button type="button"
+                      class="btn btn-warning btn-sm btn-block mt-1"
+                      data-target="checkin.guestTicket"
+                      data-value="<%=guest.id%>"
+                      data-name="<%=guest.name%>"
+                      data-action="checkin#setTicket">
+                Salvar
+              </button>
+              <% else %>
+                  <span class="badge badge-dark"><%= guest.ticket %></span>
+
                 <% end %>
               </td>
               <td>
