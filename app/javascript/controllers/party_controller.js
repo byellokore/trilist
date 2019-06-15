@@ -23,6 +23,10 @@ export default class extends Controller {
     }
 
     addTicket(event){
+        let fakeInput = document.getElementById("fakeTicket");
+        if (fakeInput != null) {
+            fakeInput.remove();
+        }
         let componentId = "_" + Date.now();
         event.target.parentNode
              .insertAdjacentHTML("beforeend",
@@ -58,6 +62,8 @@ export default class extends Controller {
         let tickets = document.querySelectorAll(".tickets");
         if (tickets.length == 0) {
             let fakeTicket = document.createElement("input");
+            fakeTicket.id= "fakeTicket";
+            fakeTicket.type = "hidden";
             fakeTicket.name = "event[preferences][tickets]";
             formTickets.appendChild(fakeTicket);
         }
