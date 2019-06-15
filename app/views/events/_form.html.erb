@@ -77,7 +77,7 @@
           <%= t :add_more_ticket %>
           <!--i class="m-2 fa fa-plus-circle"></i-->
         </button> <span>Opções de ingresso</span>
-        <% event.preferences['tickets'].try(:each) do |k,v| %>
+        <% event.try("preferences['tickets']").try(:each) do |k,v| %>
           <div class="row tickets">
             <div class="col ticket-name">
 
