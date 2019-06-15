@@ -37,7 +37,7 @@
                 <% end %>
               </td>
               <td>
-              <% unless @event.try(:tickets) %>
+              <% unless !guest.ticket.nil? %>
               <%= select("ticket","ticket_id",@event.try(:tickets)  {|k,v| [ k, v ] }, {prompt: 'Selecione'},class: "form-control ticket-type") %>
               <button type="button"
                       class="btn btn-warning btn-sm btn-block mt-1"
