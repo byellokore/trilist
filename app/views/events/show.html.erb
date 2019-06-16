@@ -2,19 +2,20 @@
   <p id="notice"><%= notice %></p>
 
   <p>
-    <strong>Name:</strong>
+    <strong>
     <%= @event.name %>
+    </strong>
     <input name="authenticity_token"
            type="hidden"
            value="<%= form_authenticity_token %>"/>
   </p>
-  <div data-controller="checkin" data-checkin-update-url="/guests/check_in/" data-checkin-ticket-url="/guests/ticket/">
+  <div data-controller="checkin" data-checkin-update-url="/guests/check_in/" data-checkin-ticket-url="/guests/ticket/" class="row">
 <!--  <div class="d-flex">-->
 <!--      <div class="table-responsive">-->
-        <table id="list_table" class="table table-sm" data-target="checkin.eventId" data-value="<%=@event.id %>">
+        <table id="list_table" class="table table-striped table-bordered table-sm" data-target="checkin.eventId" data-value="<%=@event.id %>">
           <thead>
           <th scope="col">#</th>
-          <th scope="col">Nome</th>
+          <th scope="col" colspan="2">Nome</th>
           <th scope="col">Ingresso</th>
           <th scope="col">Promoter</th>
           </thead>
@@ -22,10 +23,13 @@
           <% @event.guests.each do |guest| %>
             <tr>
               <td><%= "#{@event.id}#{guest.id}" %></td>
-              <td data-target="checkin.name"><%= "#{guest.name} #{guest.surname}" %>
+              <td data-target="checkin.name">
+                <%= "#{guest.name} #{guest.surname}" %>
+              </td>
+              <td>
                 <% unless guest.attended %>
                 <button type="button"
-                        class="btn btn-success btn-sm"
+                        class="btn btn-success btn-sm mr-1"
                         data-target="checkin.guestAttended"
                         data-value="<%=guest.id%>"
                         data-name="<%=guest.name%>"
@@ -33,11 +37,11 @@
                   Check-in
                 </button>
                 <% else %>
-                  <span class="badge badge-info">Check-in: <%= l guest.updated_at, format: :short%></span>
+                <span class="badge badge-info">Check-in: <%= l guest.updated_at, format: :short%></span>
                 <% end %>
               </td>
               <td>
-              <% unless !guest.ticket.nil? %>
+              <% unless !guest.ticket.nil? && !guest.ticket.empty? %>
               <%= select("ticket","ticket_id",@event.try(:tickets)  {|k,v| [ k, v ] }, {prompt: 'Selecione'},class: "form-control ticket-type") %>
               <button type="button"
                       class="btn btn-warning btn-sm btn-block mt-1"
@@ -49,8 +53,7 @@
               </button>
               <% else %>
                   <span class="badge badge-dark"><%= guest.ticket %></span>
-
-                <% end %>
+              <% end %>
               </td>
               <td>
                 <%= partner_name(@event, guest) unless guest.partner_id.nil? %>

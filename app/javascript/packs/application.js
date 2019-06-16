@@ -41,10 +41,8 @@ ActiveStorage.start();
 
 $(document).ready(function() {
     $("#list_table_public").DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-          'copy', 'csv', 'excel', 'pdf'
-        ],
+        dom: 'Bfrti',
+        buttons: true,
         responsive: true,
         paging: false,
         language: {
@@ -55,10 +53,10 @@ $(document).ready(function() {
         { responsivePriority: 2, targets: -1 }
         ]
     });
-    $("#list_table").DataTable({
+   var table = $("#list_table").DataTable({
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf'
+            'copy','excel', 'pdf'
         ],
         responsive: true,
         paging: false,
@@ -67,9 +65,12 @@ $(document).ready(function() {
         },
         columnDefs: [
             { responsivePriority: 1, targets: 1 },
-            { responsivePriority: 2, targets: -1 },
-            { responsivePriority: 3, targets: 2 }
+            { responsivePriority: 2, targets: -1 }
         ]
     });
+    table
+        .buttons()
+        .container()
+        .appendTo( '#controlPanel' );
     Inputmask().mask(document.querySelectorAll("input"));
 });

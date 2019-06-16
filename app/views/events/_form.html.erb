@@ -43,12 +43,12 @@
         <%= form.text_field :address, class: "form-control" %>
       </div>
 
-      <div class="form-group d-flex justify-content-between w-50">
+      <div class="form-group">
         <%= form.label :abertura_da_lista %>
         <%= form.datetime_select :open_to_registration, class: "form-control" %>
       </div>
 
-      <div class="form-group d-flex justify-content-between w-50">
+      <div class="form-group">
         <%= form.label :fechamento_da_lista %>
         <%= form.datetime_select :close_to_registration, class: "form-control" %>
       </div>
@@ -77,7 +77,7 @@
           <%= t :add_more_ticket %>
           <!--i class="m-2 fa fa-plus-circle"></i-->
         </button> <span>Opções de ingresso</span>
-        <% event.try(:preferences)['tickets'].try(:each) do |k,v| %>
+        <% event.tickets.try(:each) do |k,v| %>
           <div class="row tickets">
             <div class="col ticket-name">
 
