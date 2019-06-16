@@ -10,6 +10,7 @@ class Guest < ApplicationRecord
   #validate :cellphone_xor_email
   validates :surname, presence: true, length: { minimum: 3 }, allow_nil: false
   validate  :over_age
+
   private
 
   def cellphone_xor_email
@@ -19,7 +20,7 @@ class Guest < ApplicationRecord
   end
 
   def over_age
-    unless self.birthday <= 18.years.before(self.event_will_happen)
+    unless birthday.nil? || birthday <= 18.years.before(event_will_happen)
       errors.add(:base, :under_age)
     end
   end
