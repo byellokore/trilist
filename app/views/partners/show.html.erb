@@ -6,24 +6,53 @@
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @partner.name %>
 </p>
+<input name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>"/>
+<div data-controller="checkin" data-checkin-update-url="/guests/check_in/" data-checkin-ticket-url="/guests/ticket/" >
+<% @guests.try(:each) do |guest| %>
+  <tr>
+    <td><%= "#{guest.event_id}#{guest.id}" %></td>
+    <td data-target="checkin.name">
+      <%= "#{guest.name} #{guest.surname}" %>
+    </td>
+    <td>
+      <% unless guest.attended %>
+        <button type="button"
+                class="btn btn-success btn-sm mr-1"
+                data-target="checkin.guestAttended"
+                data-value="<%=guest.id%>"
+                data-name="<%=guest.name%>"
+                data-action="checkin#setCheckin">
+          Check-in
+        </button>
+      <% else %>
+        <span class="badge badge-info">Check-in: <%= l guest.updated_at, format: :short%></span>
+      <% end %>
+    </td>
+    <td>
+      <% unless !guest.ticket.nil? && !guest.ticket.empty? %>
+        <%= select("ticket","ticket_id",event_tickets(guest.event_id).try(:tickets)  {|k,v| [ k, v ] }, {prompt: 'Selecione'},class: "form-control ticket-type") %>
+        <button type="button"
+                class="btn btn-warning btn-sm btn-block mt-1"
+                data-target="checkin.guestTicket"
+                data-value="<%=guest.id%>"
+                data-name="<%=guest.name%>"
+                data-action="checkin#setTicket">
+          Salvar
+        </button>
+      <% else %>
+        <span class="badge badge-dark"><%= guest.ticket %></span>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</tbody>
+</table>
 
-<p>
-  <strong>Phone numbers:</strong>
-  <%= @partner.phone_numbers %>
-</p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @partner.password %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @partner.active %>
-</p>
-
-<%= link_to 'Edit', edit_partner_path(@partner) %> |
-<%= link_to 'Back', partners_path %>
+<%= link_to (t :edit), edit_partner_path(@partner) %> |
+<%= link_to (t :back), partners_path %>

@@ -1,6 +1,7 @@
 class PartnersController < ApplicationController
-  before_action :set_partner, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_inviter!
+  before_action :set_partner, only: [:edit, :update, :destroy]
+  before_action :authenticate_inviter!, only: [:edit, :update, :destroy]
+  before_action :authenticate_partner, only: [:show]
 
   # GET /partners
   # GET /partners.json
@@ -8,9 +9,14 @@ class PartnersController < ApplicationController
     @partners = Partner.all
   end
 
+  def login
+    @partner = Partner.new
+  end
+
   # GET /partners/1
   # GET /partners/1.json
   def show
+    @guests = Guest.where('partner_id = ?', @partner.id)
   end
 
   # GET /partners/new
@@ -71,5 +77,13 @@ class PartnersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def partner_params
       params.require(:partner).permit(:email, :name, :phone_numbers, :password, :active, :inviter_id)
+    end
+
+    def authenticate_partner
+      @partner = Partner.find_by( email: params[:partner][:email],
+                                  password: params[:partner][:password])
+      if @partner.nil?
+        redirect_to login_promoters_path
+      end
     end
 end

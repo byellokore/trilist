@@ -11,4 +11,12 @@ module PartnersHelper
   def guest_situation(attended)
     attended ? 'Presentes' : 'Não Compareceram'
   end
+
+  def event_tickets(event_id)
+    event = Event.find_by(id: event_id)
+    if event.nil?
+      event = {}
+    end
+    event
+  end
 end
