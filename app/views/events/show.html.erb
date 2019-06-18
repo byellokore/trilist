@@ -1,6 +1,5 @@
 <div class="container-fluid">
   <p id="notice"><%= notice %></p>
-
   <p>
     <strong>
     <%= @event.name %>
@@ -64,6 +63,38 @@
         </table>
 <!--      </div>-->
 <!--  </div>-->
+  </div>
+  <div class="d-print-flex d-none w-100">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">Promoter</th>
+        <th scope="col">#</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Valor Por Convidado</th>
+        <th scope="col">Valor: (R$)</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @event.guests.group(:partner_id,:attended).size.try(:each) do |k, v| %>
+        <tr>
+          <td>
+            <strong>
+              <%= promoter_name(k)%>
+            </strong>
+          </td>
+          <td><%= guest_situation(k[1])%></td>
+          <td>
+            <strong>
+              <%= v%>
+            </strong>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 

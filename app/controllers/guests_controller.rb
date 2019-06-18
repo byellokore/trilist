@@ -14,10 +14,10 @@ class GuestsController < ApplicationController
   def show
   end
 
-  # GET /guests/new
-  def new
-    @guest = Guest.new
-  end
+  # # GET /guests/new
+  # def new
+  #   redirect_to new_to_list
+  # end
   # GET /guests/new_to_list
   def new_to_list
     @guest = Guest.new
