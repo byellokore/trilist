@@ -35,8 +35,8 @@ class PartnersController < ApplicationController
 
     respond_to do |format|
       if @partner.save
-        format.html { redirect_to @partner, notice: 'Partner was successfully created.' }
-        format.json { render :show, status: :created, location: @partner }
+        format.html { redirect_to partners_path, notice: 'Partner was successfully created.' }
+        format.json { render :index, status: :created, location: @partner }
       else
         format.html { render :new }
         format.json { render json: @partner.errors, status: :unprocessable_entity }
@@ -49,8 +49,8 @@ class PartnersController < ApplicationController
   def update
     respond_to do |format|
       if @partner.update(partner_params)
-        format.html { redirect_to @partner, notice: 'Partner was successfully updated.' }
-        format.json { render :show, status: :ok, location: @partner }
+        format.html { redirect_to partners_path, notice: 'Partner was successfully updated.' }
+        format.json { render :index, status: :ok, location: @partner }
       else
         format.html { render :edit }
         format.json { render json: @partner.errors, status: :unprocessable_entity }

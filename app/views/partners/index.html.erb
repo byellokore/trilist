@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Partners</h1>
+<h1>Promoters</h1>
 <div class="table-responsive d-flex">
 <table class="table-responsive">
   <thead>
     <tr>
-      <th>id</th>
+      <th>Id</th>
       <th>Email</th>
       <th>Nome</th>
       <th>Telefones</th>
@@ -23,10 +23,9 @@
         <td><%= partner.name %></td>
         <td><%= partner.phone_numbers %></td>
         <td><%= partner.password %></td>
-        <td><%= partner.active %></td>
-        <td><%= link_to 'Show', partner %></td>
-        <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
-        <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= "Ativo" unless !partner.active %></td>
+        <td><%= link_to 'Editar', edit_partner_path(partner) %></td>
+        <td><%= link_to 'Remover', partner, method: :delete, data: { confirm: 'Tem Certeza' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +33,4 @@
 </div>
 <br>
 
-<%= link_to 'New Partner', new_partner_path %>
+<%= link_to 'Novo Promoter', new_partner_path %>
