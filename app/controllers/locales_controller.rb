@@ -1,11 +1,11 @@
 class LocalesController < ApplicationController
   before_action :authenticate_inviter!
   before_action :set_locale, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_locale_owner, only: [:show, :update, :destroy, :edit]
   # GET /locales
   # GET /locales.json
   def index
-    @locales = Locale.all
+    @locales = current_inviter.locales
   end
 
   # GET /locales/1
@@ -68,6 +68,11 @@ class LocalesController < ApplicationController
       @locale = Locale.find(params[:id])
     end
 
+    def check_locale_owner
+      unless current_inviter.id == @locale.inviter_id
+        redirect_to locales_path
+      end
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def locale_params
       params.require(:locale).permit(:name, :address, :city, :zip_code, :inviter_id)
