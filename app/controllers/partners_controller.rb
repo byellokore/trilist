@@ -6,7 +6,7 @@ class PartnersController < ApplicationController
   # GET /partners
   # GET /partners.json
   def index
-    @partners = Partner.all
+    @partners = current_inviter.partners.all
   end
 
   def login

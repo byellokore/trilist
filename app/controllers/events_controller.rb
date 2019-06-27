@@ -11,7 +11,6 @@ class EventsController < ApplicationController
   end
 
   def public
-    
   end
 
   # GET /events/1

@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   post 'guests/check_in/', to: 'guests#check_in'
   post 'guests/ticket/', to: 'guests#ticket'
   get  'login_promoters', to: 'partners#login'
-  post  'meus_eventos', to: 'partners#show'
+  post 'meus_eventos', to: 'partners#show'
   #resources :users
 end
