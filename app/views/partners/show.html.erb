@@ -33,6 +33,8 @@
       <% end %>
       <% unless guest.ticket.nil? %>
         <span class="badge badge-dark"><%= guest.ticket %></span>
+      <% else%>
+        <span class="badge badge-warning">Falta Ingresso</span>
       <% end %>
     </td>
   </tr>
