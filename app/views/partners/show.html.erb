@@ -30,7 +30,8 @@
                 data-action="checkin#setTicket">
           Salvar
         </button>
-      <% else %>
+      <% end %>
+      <% unless guest.ticket.nil? %>
         <span class="badge badge-dark"><%= guest.ticket %></span>
       <% end %>
     </td>
