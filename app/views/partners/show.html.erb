@@ -8,7 +8,13 @@
        type="hidden"
        value="<%= form_authenticity_token %>"/>
 <div data-controller="checkin" data-checkin-update-url="/guests/check_in/" data-checkin-ticket-url="/guests/ticket/" >
-<% @guests.try(:each) do |guest| %>
+  <table>
+    <thead>
+      <th>Nome</th>
+      <th>Ingresso</th>
+    </thead>
+  <tbody>
+  <% @guests.try(:each) do |guest| %>
   <tr>
     <td><%= "#{guest.event_id}#{guest.id}" %></td>
     <td data-target="checkin.name">
